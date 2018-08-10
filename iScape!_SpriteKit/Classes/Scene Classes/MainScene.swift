@@ -109,13 +109,24 @@ class MainScene: SKScene {
         
         switch dir {
         case .up:
+            
+            let pictureAction = SKAction.animate(with: [SKTexture(image: #imageLiteral(resourceName: "walk-back2")), SKTexture(image: #imageLiteral(resourceName: "walk-back1"))], timePerFrame: 0.25)
             player.texture = SKTexture(image: #imageLiteral(resourceName: "walk-back1"))
+            let moveAction = SKAction.moveBy(x: 0, y: 4, duration: 0.5)
+            player.run(SKAction.group([pictureAction, moveAction]))
+            
         case .down:
             player.texture = SKTexture(image: #imageLiteral(resourceName: "walk-front1"))
+            let moveAction = SKAction.moveBy(x: 0, y: -4, duration: 0.5)
+            player.run(moveAction)
         case .right:
             player.texture = SKTexture(image: #imageLiteral(resourceName: "walk-right1"))
+            let moveAction = SKAction.moveBy(x: 4, y: 0, duration: 0.5)
+            player.run(moveAction)
         case .left:
             player.texture = SKTexture(image: #imageLiteral(resourceName: "walk-left1"))
+            let moveAction = SKAction.moveBy(x: -4, y: 0, duration: 0.5)
+            player.run(moveAction)
         }
         
         
