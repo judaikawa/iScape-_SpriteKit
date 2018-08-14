@@ -9,10 +9,61 @@
 import SpriteKit
 
 class InitialScene: SKScene {
+    
+    // Buttons
+    var upButton: SKShapeNode?
+    var downButton: SKShapeNode?
+    var rightButton: SKShapeNode?
+    var leftButton: SKShapeNode?
+    var selectButton: SKShapeNode?
+    var startButton: SKShapeNode?
+    var aButton: SKShapeNode?
+    var bButton: SKShapeNode?
+    
+    // Direction Buttons
+    var dirButtons = [SKShapeNode?]()
+    var dirButtonsName = [String]()
+    
+    // Menu Buttons
+    var menuButtons = [SKShapeNode?]()
+    var menuButtonsName = [String]()
 
     override func didMove(to view: SKView) {
         
+        // Buttons
+        setUpButtons()
         
+    }
+    
+    func setUpButtons() {
+        
+        dirButtons = [upButton, downButton, rightButton, leftButton]
+        dirButtonsName = ["upButton", "downButton", "rightButton", "leftButton"]
+        
+        menuButtons = [selectButton, startButton]
+        menuButtonsName = ["selectButton", "startButton"]
+        
+        for i in 0..<dirButtons.count {
+            roundButton(button: dirButtons[i], withName: dirButtonsName[i], cornerRadius: 5)
+        }
+        
+        for i in 0..<menuButtons.count {
+            roundButton(button: menuButtons[i], withName: menuButtonsName[i], cornerRadius: 12)
+        }
+    }
+    
+    func roundButton(button: SKShapeNode?, withName name: String, cornerRadius: CGFloat) {
+        if let button = self.childNode(withName: "Console")?.childNode(withName: name) as? SKShapeNode {
+            
+            let roundButton = SKShapeNode(rect: button.frame, cornerRadius: cornerRadius)
+            roundButton.fillColor = button.fillColor
+            roundButton.strokeColor = button.strokeColor
+            self.childNode(withName: "Console")?.addChild(roundButton)
+            button.removeFromParent()
+            roundButton.name = name
+            roundButton.zPosition = 2
+            
+        }
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -24,8 +75,7 @@ class InitialScene: SKScene {
             switch atPoint(location).name {
                 
             case "aButton":
-                print("a")
-                let transition: SKTransition = SKTransition.fade(with: UIColor.white, duration: 5)
+                // Go to Main Scene
                 if let scene = MainScene(fileNamed: "MainScene") {
                     // Set the scale mode to scale to fit the window
                     scene.scaleMode = .aspectFill

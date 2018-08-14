@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A33EE6B22122FD3600420ED0 /* 8-bit pusab.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E9E74B69211C805A000560EA /* 8-bit pusab.ttf */; };
 		E9E74B4B211A3F91000560EA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E74B4A211A3F91000560EA /* AppDelegate.swift */; };
 		E9E74B4F211A3F91000560EA /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = E9E74B4E211A3F91000560EA /* Actions.sks */; };
 		E9E74B53211A3F91000560EA /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E74B52211A3F91000560EA /* GameViewController.swift */; };
@@ -15,7 +16,6 @@
 		E9E74B5B211A3F92000560EA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E9E74B59211A3F92000560EA /* LaunchScreen.storyboard */; };
 		E9E74B64211A4292000560EA /* MainScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = E9E74B63211A4292000560EA /* MainScene.sks */; };
 		E9E74B68211A42C2000560EA /* MainScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E74B67211A42C2000560EA /* MainScene.swift */; };
-		E9E74B6A211C81E1000560EA /* 8-bit pusab.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E9E74B69211C805A000560EA /* 8-bit pusab.ttf */; };
 		E9E74B6C211C9B0E000560EA /* InitialScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = E9E74B6B211C9B0E000560EA /* InitialScene.sks */; };
 		E9E74B6E211C9B47000560EA /* InitialScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E74B6D211C9B47000560EA /* InitialScene.swift */; };
 /* End PBXBuildFile section */
@@ -164,10 +164,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E9E74B6A211C81E1000560EA /* 8-bit pusab.ttf in Resources */,
 				E9E74B56211A3F91000560EA /* Main.storyboard in Resources */,
 				E9E74B58211A3F92000560EA /* Assets.xcassets in Resources */,
 				E9E74B64211A4292000560EA /* MainScene.sks in Resources */,
+				A33EE6B22122FD3600420ED0 /* 8-bit pusab.ttf in Resources */,
 				E9E74B6C211C9B0E000560EA /* InitialScene.sks in Resources */,
 				E9E74B5B211A3F92000560EA /* LaunchScreen.storyboard in Resources */,
 				E9E74B4F211A3F91000560EA /* Actions.sks in Resources */,
