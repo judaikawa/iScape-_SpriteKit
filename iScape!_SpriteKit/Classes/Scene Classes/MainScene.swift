@@ -15,6 +15,17 @@ enum Direction {
     case left
 }
 
+enum App {
+    case mail
+    case calendar
+    case photos
+    case notes
+    case clock
+    case camera
+    case calculator
+    case messages
+}
+
 struct PhysicsCategory {
     static let none: UInt32      = 0     // 0
     static let player: UInt32 = 0b1   // 1
@@ -33,10 +44,15 @@ class MainScene: SKScene, SKPhysicsContactDelegate {
     var aButton: SKShapeNode?
     var bButton: SKShapeNode?
     
-    // Background and player
+    // Background
     var backgroundNode: SKSpriteNode?
     var blackViewNode: SKSpriteNode?
+    
+    // Player
     var player: SKSpriteNode?
+    var playerXPosition: CGFloat = 58
+    var playerYPosition: CGFloat = -50
+    
     
     // Apss
     var mailApp: SKSpriteNode?
@@ -58,11 +74,19 @@ class MainScene: SKScene, SKPhysicsContactDelegate {
 
     override func didMove(to view: SKView) {
         
-        // Presenting view
+        // If previous scene is Initial Scene, present with actions
         blackViewNode = self.childNode(withName: "blackViewNode") as? SKSpriteNode
-        blackViewNode?.alpha = 1
-        let colorize = SKAction.fadeOut(withDuration: 2)
-        blackViewNode?.run(colorize)
+        if self.userData?.value(forKey: "previousScene") != nil {
+            // Presenting view
+            blackViewNode?.alpha = 1
+            let colorize = SKAction.colorize(with: UIColor.white, colorBlendFactor: 2, duration: 2)
+            let fadeOut = SKAction.fadeOut(withDuration: 2)
+            blackViewNode?.run(SKAction.sequence([colorize, fadeOut]))
+        }
+        
+        // Player position
+        print(playerXPosition)
+        print(playerYPosition)
         
         // Player Node
         player = self.childNode(withName: "backgroundNode")?.childNode(withName: "player") as? SKSpriteNode
@@ -89,36 +113,6 @@ class MainScene: SKScene, SKPhysicsContactDelegate {
         
     }
     
-    func setUpButtons() {
-        
-        dirButtons = [upButton, downButton, rightButton, leftButton]
-        dirButtonsName = ["upButton", "downButton", "rightButton", "leftButton"]
-        
-        menuButtons = [selectButton, startButton]
-        menuButtonsName = ["selectButton", "startButton"]
-        
-        for i in 0..<dirButtons.count {
-            roundButton(button: dirButtons[i], withName: dirButtonsName[i], cornerRadius: 5)
-        }
-        
-        for i in 0..<menuButtons.count {
-            roundButton(button: menuButtons[i], withName: menuButtonsName[i], cornerRadius: 12)
-        }
-    }
-    
-    func roundButton(button: SKShapeNode?, withName name: String, cornerRadius: CGFloat) {
-        if let button = self.childNode(withName: "Console")?.childNode(withName: name) as? SKShapeNode {
-            
-            let roundButton = SKShapeNode(rect: button.frame, cornerRadius: cornerRadius)
-            roundButton.fillColor = button.fillColor
-            roundButton.strokeColor = button.strokeColor
-            self.childNode(withName: "Console")?.addChild(roundButton)
-            button.removeFromParent()
-            roundButton.name = name
-            roundButton.zPosition = 2
-            
-        }
-    }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         
@@ -159,7 +153,7 @@ class MainScene: SKScene, SKPhysicsContactDelegate {
     
     func walk(dir: Direction, numberOfTouches: Int) {
         
-        let step: CGFloat = 10
+        let step: CGFloat = 6
         
         switch dir {
         case .up:
@@ -192,6 +186,9 @@ class MainScene: SKScene, SKPhysicsContactDelegate {
     
     func goToApp() {
         
+        playerXPosition = (player?.position.x)!
+        playerYPosition = (player?.position.y)!
+        
         if (player?.intersects(mailApp!))! {
             print("mailApp")
         } else if (player?.intersects(calendarApp!))! {
@@ -205,14 +202,75 @@ class MainScene: SKScene, SKPhysicsContactDelegate {
         } else if (player?.intersects(cameraApp!))! {
             print("cameraApp")
         } else if (player?.intersects(calculatorApp!))! {
-            print("calculatorApp")
+            presentApp(app: .calculator)
         } else if (player?.intersects(messageApp!))! {
-            print("messageApp")
+            presentApp(app: .messages)
         }
         
     }
     
+    func presentApp(app: App) {
+        
+        var appScene: SKScene?
+        
+        switch app {
+        case .calculator:
+            appScene = CalculatorScene(fileNamed: "CalculatorScene")
+        case .messages:
+            appScene = MessagesScene(fileNamed: "MessagesScene")
+        default:
+            print("to-do")
+        }
+        
+        let fadeIn = SKAction.fadeIn(withDuration: 2)
+        blackViewNode?.color = UIColor.black
+        blackViewNode?.run(fadeIn, completion: {
+            if let scene = appScene {
+                // Set the scale mode to scale to fit the window
+                scene.scaleMode = .aspectFill
+                
+                // Present the scene
+                self.view?.presentScene(scene)
+            }
+        })
+        
+    }
     
+    
+}
+
+// Console View
+extension MainScene {
+    func setUpButtons() {
+        
+        dirButtons = [upButton, downButton, rightButton, leftButton]
+        dirButtonsName = ["upButton", "downButton", "rightButton", "leftButton"]
+        
+        menuButtons = [selectButton, startButton]
+        menuButtonsName = ["selectButton", "startButton"]
+        
+        for i in 0..<dirButtons.count {
+            roundButton(button: dirButtons[i], withName: dirButtonsName[i], cornerRadius: 5)
+        }
+        
+        for i in 0..<menuButtons.count {
+            roundButton(button: menuButtons[i], withName: menuButtonsName[i], cornerRadius: 12)
+        }
+    }
+    
+    func roundButton(button: SKShapeNode?, withName name: String, cornerRadius: CGFloat) {
+        if let button = self.childNode(withName: "Console")?.childNode(withName: name) as? SKShapeNode {
+            
+            let roundButton = SKShapeNode(rect: button.frame, cornerRadius: cornerRadius)
+            roundButton.fillColor = button.fillColor
+            roundButton.strokeColor = button.strokeColor
+            self.childNode(withName: "Console")?.addChild(roundButton)
+            button.removeFromParent()
+            roundButton.name = name
+            roundButton.zPosition = 2
+            
+        }
+    }
 }
 
 

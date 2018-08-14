@@ -1,14 +1,14 @@
 //
-//  InitialScene.swift
+//  CalculatorScene.swift
 //  iScape!_SpriteKit
 //
-//  Created by Juliana Daikawa on 09/08/18.
+//  Created by Juliana Daikawa on 14/08/18.
 //  Copyright © 2018 Juliana Daikawa. All rights reserved.
 //
 
 import SpriteKit
 
-class InitialScene: SKScene {
+class CalculatorScene: SKScene {
     
     // Buttons
     var upButton: SKShapeNode?
@@ -28,31 +28,33 @@ class InitialScene: SKScene {
     var menuButtons = [SKShapeNode?]()
     var menuButtonsName = [String]()
     
-    var textOnBaloonNode: SKLabelNode?
-    var pressToStartNode: SKLabelNode?
-
+    // Calculator Buttons
+    var ACButton: SKShapeNode?
+    
     override func didMove(to view: SKView) {
         
-        // Buttons
         setUpButtons()
         
-        textOnBaloonNode = self.childNode(withName: "talkBaloonNode")?.childNode(withName: "textOnBaloonNode") as? SKLabelNode
+        ACButton = self.childNode(withName: "AC") as? SKShapeNode
         
-        pressToStartNode = self.childNode(withName: "talkBaloonNode")?.childNode(withName: "pressToStartNode") as? SKLabelNode
+        SKShapeNode.nodeWithLabel(node: ACButton!, text: "AC", withFontSize: 22)
+//        calculatorButton(button: ACButton, withName: "AC", cornerRadius: 10) ??
         
-        pressToStartNode?.alpha = 0
-        
-        textOnBaloonNode?.text = ""
-        textOnBaloonNode?.numberOfLines = 3
-        textOnBaloonNode?.horizontalAlignmentMode = .center
-        textOnBaloonNode?.verticalAlignmentMode = .center
-        SKLabelNode.animateText(label: textOnBaloonNode!, newText: "Wh... Where..\nWhere am I?!?\n .     .     .", characterDelay: 0.1) { (finished) in
-
-            let fadeIn = SKAction.fadeIn(withDuration: 2)
-            self.pressToStartNode?.run(fadeIn)
+    }
+    
+    func calculatorButton(button: SKShapeNode?, withName name: String, cornerRadius: CGFloat) {
+        if let button = self.childNode(withName: name) as? SKShapeNode {
+            
+            let roundButton = SKShapeNode(rect: button.frame, cornerRadius: cornerRadius)
+            roundButton.fillColor = button.fillColor
+            roundButton.strokeColor = button.strokeColor
+            SKShapeNode.nodeWithLabel(node: roundButton, text: name, withFontSize: 22)
+            self.addChild(roundButton)
+            button.removeFromParent()
+            roundButton.name = name
+            roundButton.zPosition = 2
             
         }
-        
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -62,32 +64,28 @@ class InitialScene: SKScene {
             let location = touch.location(in: self)
             
             switch atPoint(location).name {
-                
-            case "aButton":
-                // Go to Main Scene
+            case "bButton":
                 if let scene = MainScene(fileNamed: "MainScene") {
                     // Set the scale mode to scale to fit the window
                     scene.scaleMode = .aspectFill
                     
-                    scene.userData = NSMutableDictionary()
-                    scene.userData?.setObject("InitialScene", forKey: "previousScene" as NSCopying)
-                    
                     // Present the scene
                     self.view?.presentScene(scene)
                 }
+            case "startButton":
+                print("startButton")
             default:
-                print("default")
-                
+                print("nothing")
             }
             
         }
+        
     }
-    
     
 }
 
 // Console View
-extension InitialScene {
+extension CalculatorScene {
     func setUpButtons() {
         
         dirButtons = [upButton, downButton, rightButton, leftButton]
