@@ -35,9 +35,9 @@ extension SKLabelNode {
     
 }
 
-extension SKShapeNode {
+extension SKSpriteNode {
     
-    public static func nodeWithLabel(node: SKShapeNode, text: String, withFontSize: CGFloat) {
+    public static func nodeWithLabel(node: SKSpriteNode, text: String, withFontSize: CGFloat) {
         
         let label = SKLabelNode(text: text)
         label.color = UIColor.white

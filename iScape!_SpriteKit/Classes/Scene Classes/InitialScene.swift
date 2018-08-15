@@ -76,7 +76,7 @@ class InitialScene: SKScene {
                     self.view?.presentScene(scene)
                 }
             default:
-                print("default")
+                return
                 
             }
             

@@ -13,6 +13,7 @@
 		A33EE6B82123413400420ED0 /* MessagesScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = A33EE6B72123413400420ED0 /* MessagesScene.swift */; };
 		A33EE6BA21234FE600420ED0 /* CalculatorScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = A33EE6B921234FE600420ED0 /* CalculatorScene.sks */; };
 		A33EE6BC2123506700420ED0 /* CalculatorScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = A33EE6BB2123506700420ED0 /* CalculatorScene.swift */; };
+		A3FBB0312124BF4C008F1E9A /* SKButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3FBB0302124BF4C008F1E9A /* SKButton.swift */; };
 		E9E74B4B211A3F91000560EA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E74B4A211A3F91000560EA /* AppDelegate.swift */; };
 		E9E74B4F211A3F91000560EA /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = E9E74B4E211A3F91000560EA /* Actions.sks */; };
 		E9E74B53211A3F91000560EA /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E74B52211A3F91000560EA /* GameViewController.swift */; };
@@ -31,6 +32,7 @@
 		A33EE6B72123413400420ED0 /* MessagesScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesScene.swift; sourceTree = "<group>"; };
 		A33EE6B921234FE600420ED0 /* CalculatorScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = CalculatorScene.sks; sourceTree = "<group>"; };
 		A33EE6BB2123506700420ED0 /* CalculatorScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorScene.swift; sourceTree = "<group>"; };
+		A3FBB0302124BF4C008F1E9A /* SKButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKButton.swift; sourceTree = "<group>"; };
 		E9E74B47211A3F91000560EA /* iScape!_SpriteKit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "iScape!_SpriteKit.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E9E74B4A211A3F91000560EA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E9E74B4E211A3F91000560EA /* Actions.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Actions.sks; sourceTree = "<group>"; };
@@ -106,6 +108,7 @@
 			children = (
 				A33EE6B32123352900420ED0 /* Extension.swift */,
 				E9E74B66211A42A1000560EA /* Scene Classes */,
+				A3FBB0302124BF4C008F1E9A /* SKButton.swift */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -201,6 +204,7 @@
 				A33EE6B82123413400420ED0 /* MessagesScene.swift in Sources */,
 				A33EE6B42123352900420ED0 /* Extension.swift in Sources */,
 				E9E74B68211A42C2000560EA /* MainScene.swift in Sources */,
+				A3FBB0312124BF4C008F1E9A /* SKButton.swift in Sources */,
 				E9E74B6E211C9B47000560EA /* InitialScene.swift in Sources */,
 				A33EE6BC2123506700420ED0 /* CalculatorScene.swift in Sources */,
 				E9E74B53211A3F91000560EA /* GameViewController.swift in Sources */,

@@ -8,6 +8,11 @@
 
 import SpriteKit
 
+enum ButtonType {
+    case number
+    case operation
+}
+
 class CalculatorScene: SKScene {
     
     // Buttons
@@ -28,33 +33,21 @@ class CalculatorScene: SKScene {
     var menuButtons = [SKShapeNode?]()
     var menuButtonsName = [String]()
     
-    // Calculator Buttons
-    var ACButton: SKShapeNode?
+    // Calculator
+    var resultLabelNode: SKLabelNode?
+    var n1: Float?
+    var n2: Float?
+    var n3: Float?
+    var result: Float?
+    var operat: String?
     
     override func didMove(to view: SKView) {
         
+        resultLabelNode = self.childNode(withName: "resultLabelNode") as? SKLabelNode
+        resultLabelNode?.horizontalAlignmentMode = .right
+        
         setUpButtons()
         
-        ACButton = self.childNode(withName: "AC") as? SKShapeNode
-        
-        SKShapeNode.nodeWithLabel(node: ACButton!, text: "AC", withFontSize: 22)
-//        calculatorButton(button: ACButton, withName: "AC", cornerRadius: 10) ??
-        
-    }
-    
-    func calculatorButton(button: SKShapeNode?, withName name: String, cornerRadius: CGFloat) {
-        if let button = self.childNode(withName: name) as? SKShapeNode {
-            
-            let roundButton = SKShapeNode(rect: button.frame, cornerRadius: cornerRadius)
-            roundButton.fillColor = button.fillColor
-            roundButton.strokeColor = button.strokeColor
-            SKShapeNode.nodeWithLabel(node: roundButton, text: name, withFontSize: 22)
-            self.addChild(roundButton)
-            button.removeFromParent()
-            roundButton.name = name
-            roundButton.zPosition = 2
-            
-        }
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -62,7 +55,17 @@ class CalculatorScene: SKScene {
         for touch in touches {
             
             let location = touch.location(in: self)
+            let touchedNodes = self.scene?.nodes(at: location)
+            guard let nodes = touchedNodes else {
+                return
+            }
             
+            for node in nodes {
+                if let button = node as? SKButton, let name = button.name {
+                    // Button from calculator
+                    calculator(button: name)
+                }
+            }
             switch atPoint(location).name {
             case "bButton":
                 if let scene = MainScene(fileNamed: "MainScene") {
@@ -75,7 +78,7 @@ class CalculatorScene: SKScene {
             case "startButton":
                 print("startButton")
             default:
-                print("nothing")
+                return
             }
             
         }
@@ -83,6 +86,132 @@ class CalculatorScene: SKScene {
     }
     
 }
+
+// Calculator Logic
+extension CalculatorScene {
+    
+    func calculator(button: String) {
+        
+        if let number = Int(button) {
+            numberPressed(number: number)
+        } else {
+            operatorPressed(operate: button)
+        }
+        
+    }
+    
+    func numberPressed(number: Int) {
+        if resultLabelNode?.text == "0" || resultLabelNode?.text == "Error" {
+            resultLabelNode?.text = String(number)
+        } else {
+            if n1 == nil && operat == nil {
+                resultLabelNode?.text = (resultLabelNode?.text)! + String(number)
+            } else {
+                if n3 == nil {
+                    resultLabelNode?.text = String(number)
+                    n3 = Float((resultLabelNode?.text)!)
+                } else {
+                    resultLabelNode?.text = (resultLabelNode?.text)! + String(number)
+                }
+            }
+        }
+    }
+    
+    func operatorPressed(operate: String) {
+        n3 = nil
+        if operate == "AC" {
+            resultLabelNode?.text = "0"
+            n1 = nil
+            n2 = nil
+            operat = nil
+            result = nil
+        } else if operate == "+-" {
+            result = Float((resultLabelNode?.text)!)! * -1
+            if result!.truncatingRemainder(dividingBy: Float(Int(result!))) == 0.0 {
+                resultLabelNode?.text = String(Int(result!))
+            } else {
+                if result! == 0 {
+                    resultLabelNode?.text = String(result!).replacingOccurrences(of: ".0", with: "")
+                } else {
+                    resultLabelNode?.text = String(result!)
+                }
+            }
+        } else if operate == "." {
+            if resultLabelNode?.text?.range(of: ".") == nil {
+                n3 = 0
+                resultLabelNode?.text = (resultLabelNode?.text)! + operate
+            }
+        } else if operate == "=" {
+            if n1 != nil && operat != nil {
+                if n2 == nil {
+                    n2 = Float((resultLabelNode?.text)!)
+                } else {
+                    if result != nil {
+                        if Float((resultLabelNode?.text)!) == result {
+                            n1 = Float((resultLabelNode?.text)!)
+                        } else {
+                            n2 = Float((resultLabelNode?.text)!)
+                        }
+                    } else {
+                        n2 = Float((resultLabelNode?.text)!)
+                    }
+                }
+                switch operat! {
+                case "x":
+                    result = n1!*n2!
+                case "/":
+                    if n2 == 0 {
+                        result = nil
+                        n1 = nil
+                        n2 = nil
+                        operat = nil
+                    } else {
+                        result = n1!/n2!
+                    }
+                case "-":
+                    result = n1!-n2!
+                case "+":
+                    result = n1!+n2!
+                default:
+                    print("Function not implemented")
+                }
+                
+                if let validResult = result {
+                    if validResult.truncatingRemainder(dividingBy: Float(Int(validResult))) == 0.0 {
+                        resultLabelNode?.text = String(Int(validResult))
+                    } else if abs(validResult) == 0 {
+                        resultLabelNode?.text = String(Int(validResult))
+                    } else {
+                        resultLabelNode?.text = String(validResult)
+                    }
+                    
+                } else {
+                    resultLabelNode?.text = "Error"
+                }
+                
+                
+            }
+            
+        } else {
+            if let validNumber = Float((resultLabelNode?.text)!) {
+                n1 = validNumber
+                operat = operate
+                if operat! == "%" {
+                    resultLabelNode?.text = String(n1!/100)
+                }
+            } else {
+                n1 = nil
+                n2 = nil
+                operat = nil
+            }
+            
+        }
+        
+    }
+    
+    
+}
+
 
 // Console View
 extension CalculatorScene {

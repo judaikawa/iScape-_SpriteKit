@@ -74,7 +74,7 @@ class MessagesScene: SKScene {
             case "startButton":
                 print("startButton")
             default:
-                print("nothing")
+                return
             }
             
         }

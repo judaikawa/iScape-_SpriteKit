@@ -144,7 +144,7 @@ class MainScene: SKScene, SKPhysicsContactDelegate {
             case "startButton":
                 print("startButton")
             default:
-                print("nothing")
+                return
             }
             
         }
@@ -153,7 +153,7 @@ class MainScene: SKScene, SKPhysicsContactDelegate {
     
     func walk(dir: Direction, numberOfTouches: Int) {
         
-        let step: CGFloat = 6
+        let step: CGFloat = 20
         
         switch dir {
         case .up:
