@@ -13,6 +13,8 @@
 		A33EE6B82123413400420ED0 /* MessagesScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = A33EE6B72123413400420ED0 /* MessagesScene.swift */; };
 		A33EE6BA21234FE600420ED0 /* CalculatorScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = A33EE6B921234FE600420ED0 /* CalculatorScene.sks */; };
 		A33EE6BC2123506700420ED0 /* CalculatorScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = A33EE6BB2123506700420ED0 /* CalculatorScene.swift */; };
+		A3BBEDB32124CEED009865BB /* NotesScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = A3BBEDB22124CEED009865BB /* NotesScene.sks */; };
+		A3BBEDB52124CF79009865BB /* NotesScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3BBEDB42124CF79009865BB /* NotesScene.swift */; };
 		A3FBB0312124BF4C008F1E9A /* SKButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3FBB0302124BF4C008F1E9A /* SKButton.swift */; };
 		E9E74B4B211A3F91000560EA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E74B4A211A3F91000560EA /* AppDelegate.swift */; };
 		E9E74B4F211A3F91000560EA /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = E9E74B4E211A3F91000560EA /* Actions.sks */; };
@@ -32,6 +34,8 @@
 		A33EE6B72123413400420ED0 /* MessagesScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesScene.swift; sourceTree = "<group>"; };
 		A33EE6B921234FE600420ED0 /* CalculatorScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = CalculatorScene.sks; sourceTree = "<group>"; };
 		A33EE6BB2123506700420ED0 /* CalculatorScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorScene.swift; sourceTree = "<group>"; };
+		A3BBEDB22124CEED009865BB /* NotesScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = NotesScene.sks; sourceTree = "<group>"; };
+		A3BBEDB42124CF79009865BB /* NotesScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesScene.swift; sourceTree = "<group>"; };
 		A3FBB0302124BF4C008F1E9A /* SKButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKButton.swift; sourceTree = "<group>"; };
 		E9E74B47211A3F91000560EA /* iScape!_SpriteKit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "iScape!_SpriteKit.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E9E74B4A211A3F91000560EA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -99,6 +103,7 @@
 				E9E74B6B211C9B0E000560EA /* InitialScene.sks */,
 				A33EE6B521233E9500420ED0 /* MessagesScene.sks */,
 				A33EE6B921234FE600420ED0 /* CalculatorScene.sks */,
+				A3BBEDB22124CEED009865BB /* NotesScene.sks */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -120,6 +125,7 @@
 				E9E74B6D211C9B47000560EA /* InitialScene.swift */,
 				A33EE6B72123413400420ED0 /* MessagesScene.swift */,
 				A33EE6BB2123506700420ED0 /* CalculatorScene.swift */,
+				A3BBEDB42124CF79009865BB /* NotesScene.swift */,
 			);
 			path = "Scene Classes";
 			sourceTree = "<group>";
@@ -190,6 +196,7 @@
 				E9E74B6C211C9B0E000560EA /* InitialScene.sks in Resources */,
 				E9E74B5B211A3F92000560EA /* LaunchScreen.storyboard in Resources */,
 				A33EE6B621233E9500420ED0 /* MessagesScene.sks in Resources */,
+				A3BBEDB32124CEED009865BB /* NotesScene.sks in Resources */,
 				E9E74B4F211A3F91000560EA /* Actions.sks in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -209,6 +216,7 @@
 				A33EE6BC2123506700420ED0 /* CalculatorScene.swift in Sources */,
 				E9E74B53211A3F91000560EA /* GameViewController.swift in Sources */,
 				E9E74B4B211A3F91000560EA /* AppDelegate.swift in Sources */,
+				A3BBEDB52124CF79009865BB /* NotesScene.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
