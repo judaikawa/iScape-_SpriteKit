@@ -198,7 +198,7 @@ class MainScene: SKScene, SKPhysicsContactDelegate {
         } else if (player?.intersects(notesApp!))! {
             presentApp(app: .notes)
         } else if (player?.intersects(clockApp!))! {
-            print("clockApp")
+            presentApp(app: .clock)
         } else if (player?.intersects(cameraApp!))! {
             print("cameraApp")
         } else if (player?.intersects(calculatorApp!))! {
@@ -214,6 +214,8 @@ class MainScene: SKScene, SKPhysicsContactDelegate {
         var appScene: SKScene?
         
         switch app {
+        case .clock:
+            appScene = ClockScene(fileNamed: "ClockScene")
         case . notes:
             appScene = NotesScene(fileNamed: "NotesScene")
         case .calculator:
