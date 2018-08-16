@@ -40,6 +40,7 @@ class MessagesScene: SKScene {
     let messagesTime = ["Yesterday, 20:41", "21/03/18, 17:56"]
     
     let tableView = UITableView()
+
     
     override func didMove(to view: SKView) {
         
@@ -129,18 +130,18 @@ class MessagesCell: UITableViewCell {
         
         // Cell Title
         cellTitle.frame = CGRect(x: 64, y: 10, width: 400, height: 20)
-        cellTitle.font = UIFont(name: "8-bit pusab", size: 10)
+        cellTitle.font = UIFont(name: pixelArtFontName, size: 10)
         contentView.addSubview(cellTitle)
         
         // Cell Detail
         cellDetail.frame = CGRect(x: 64, y: 24, width: 400, height: 30)
-        cellDetail.font = UIFont(name: "8-bit pusab", size: 8)
+        cellDetail.font = UIFont(name: pixelArtFontName, size: 8)
         cellDetail.textColor = .gray
         contentView.addSubview(cellDetail)
         
         // Date
         cellDate.frame = CGRect(x: 270, y: 5, width: 100, height: 30)
-        cellDate.font = UIFont(name: "8-bit pusab", size: 8)
+        cellDate.font = UIFont(name: pixelArtFontName, size: 8)
         cellDate.textColor = .gray
         cellDate.textAlignment = .right
         contentView.addSubview(cellDate)

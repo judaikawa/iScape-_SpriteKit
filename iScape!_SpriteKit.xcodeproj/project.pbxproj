@@ -13,6 +13,8 @@
 		A33EE6B82123413400420ED0 /* MessagesScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = A33EE6B72123413400420ED0 /* MessagesScene.swift */; };
 		A33EE6BA21234FE600420ED0 /* CalculatorScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = A33EE6B921234FE600420ED0 /* CalculatorScene.sks */; };
 		A33EE6BC2123506700420ED0 /* CalculatorScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = A33EE6BB2123506700420ED0 /* CalculatorScene.swift */; };
+		A37D523E2125901A00F86810 /* CameraScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = A37D523D2125901A00F86810 /* CameraScene.sks */; };
+		A37D5240212590A400F86810 /* CameraScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = A37D523F212590A400F86810 /* CameraScene.swift */; };
 		A3BBEDB32124CEED009865BB /* NotesScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = A3BBEDB22124CEED009865BB /* NotesScene.sks */; };
 		A3BBEDB52124CF79009865BB /* NotesScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3BBEDB42124CF79009865BB /* NotesScene.swift */; };
 		A3BBEDB72124D316009865BB /* ClockScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = A3BBEDB62124D316009865BB /* ClockScene.sks */; };
@@ -36,6 +38,8 @@
 		A33EE6B72123413400420ED0 /* MessagesScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesScene.swift; sourceTree = "<group>"; };
 		A33EE6B921234FE600420ED0 /* CalculatorScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = CalculatorScene.sks; sourceTree = "<group>"; };
 		A33EE6BB2123506700420ED0 /* CalculatorScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorScene.swift; sourceTree = "<group>"; };
+		A37D523D2125901A00F86810 /* CameraScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = CameraScene.sks; sourceTree = "<group>"; };
+		A37D523F212590A400F86810 /* CameraScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraScene.swift; sourceTree = "<group>"; };
 		A3BBEDB22124CEED009865BB /* NotesScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = NotesScene.sks; sourceTree = "<group>"; };
 		A3BBEDB42124CF79009865BB /* NotesScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesScene.swift; sourceTree = "<group>"; };
 		A3BBEDB62124D316009865BB /* ClockScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = ClockScene.sks; sourceTree = "<group>"; };
@@ -109,6 +113,7 @@
 				A33EE6B921234FE600420ED0 /* CalculatorScene.sks */,
 				A3BBEDB22124CEED009865BB /* NotesScene.sks */,
 				A3BBEDB62124D316009865BB /* ClockScene.sks */,
+				A37D523D2125901A00F86810 /* CameraScene.sks */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -132,6 +137,7 @@
 				A33EE6BB2123506700420ED0 /* CalculatorScene.swift */,
 				A3BBEDB42124CF79009865BB /* NotesScene.swift */,
 				A3BBEDB82124D31E009865BB /* ClockScene.swift */,
+				A37D523F212590A400F86810 /* CameraScene.swift */,
 			);
 			path = "Scene Classes";
 			sourceTree = "<group>";
@@ -195,6 +201,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A33EE6BA21234FE600420ED0 /* CalculatorScene.sks in Resources */,
+				A37D523E2125901A00F86810 /* CameraScene.sks in Resources */,
 				E9E74B56211A3F91000560EA /* Main.storyboard in Resources */,
 				E9E74B58211A3F92000560EA /* Assets.xcassets in Resources */,
 				E9E74B64211A4292000560EA /* MainScene.sks in Resources */,
@@ -218,6 +225,7 @@
 				A33EE6B82123413400420ED0 /* MessagesScene.swift in Sources */,
 				A33EE6B42123352900420ED0 /* Extension.swift in Sources */,
 				E9E74B68211A42C2000560EA /* MainScene.swift in Sources */,
+				A37D5240212590A400F86810 /* CameraScene.swift in Sources */,
 				A3FBB0312124BF4C008F1E9A /* SKButton.swift in Sources */,
 				E9E74B6E211C9B47000560EA /* InitialScene.swift in Sources */,
 				A3BBEDB92124D31E009865BB /* ClockScene.swift in Sources */,

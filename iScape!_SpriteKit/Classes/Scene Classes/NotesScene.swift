@@ -37,6 +37,7 @@ class NotesScene: SKScene {
     let notesDetails = ["Wednesday        Hi! My name is Juliana, I'm 21 years old...", "15/03/18        I'm very excited for WWDC18! It's..."]
     let notesText = ["Hi! My name is Juliana, I'm 21 years old, I'm from Brazil and I am a undergraduate student of Statistics and a member of Apple Developer Academy, where I learned about Swift programming and started to develop my own apps.", "I'm very excited for WWDC18! It's going to be awesome!"]
     
+    
     override func didMove(to view: SKView) {
         
         setUpButtons()
@@ -93,9 +94,9 @@ extension NotesScene: UITableViewDelegate, UITableViewDataSource {
         }
         cell?.backgroundColor = .clear
         cell?.textLabel?.text = notesTitles[indexPath.row]
-        cell?.textLabel?.font = UIFont(name: "8-bit pusab", size: 12)
+        cell?.textLabel?.font = UIFont(name: pixelArtFontName, size: 12)
         cell?.detailTextLabel?.text = notesDetails[indexPath.row]
-        cell?.detailTextLabel?.font = UIFont(name: "8-bit pusab", size: 8)
+        cell?.detailTextLabel?.font = UIFont(name: pixelArtFontName, size: 8)
         cell?.detailTextLabel?.textColor = .gray
         return cell!
     }

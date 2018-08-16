@@ -10,6 +10,9 @@ import Foundation
 import UIKit
 import SpriteKit
 
+public let pixelArtFontName = "8-bit pusab"
+public var numberOfPictures = 0
+
 // Animate text letter by letter
 extension SKLabelNode {
     
@@ -43,7 +46,7 @@ extension SKSpriteNode {
         label.color = UIColor.white
         label.verticalAlignmentMode = .center
         label.horizontalAlignmentMode = .center
-        label.fontName = "8-bit pusab"
+        label.fontName = pixelArtFontName
         label.fontSize = withFontSize
         
         node.addChild(label)
