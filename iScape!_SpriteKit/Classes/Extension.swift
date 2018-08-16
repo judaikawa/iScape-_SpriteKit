@@ -55,4 +55,14 @@ extension SKSpriteNode {
     
 }
 
+extension UIView {
+    public static func roundView(view: UIView, cornerRad: CGFloat) {
+        DispatchQueue.main.async {
+            view.layer.masksToBounds = false
+            view.layer.cornerRadius = cornerRad
+            view.clipsToBounds = true
+        }
+    }
+}
+
 

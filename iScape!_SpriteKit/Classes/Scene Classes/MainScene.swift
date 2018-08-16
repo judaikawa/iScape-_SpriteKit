@@ -192,9 +192,9 @@ class MainScene: SKScene, SKPhysicsContactDelegate {
         if (player?.intersects(mailApp!))! {
             print("mailApp")
         } else if (player?.intersects(calendarApp!))! {
-            print("calendarApp")
+            presentApp(app: .calendar)
         } else if (player?.intersects(photosApp!))! {
-            print("photosApp")
+            presentApp(app: .photos)
         } else if (player?.intersects(notesApp!))! {
             presentApp(app: .notes)
         } else if (player?.intersects(clockApp!))! {
@@ -214,6 +214,10 @@ class MainScene: SKScene, SKPhysicsContactDelegate {
         var appScene: SKScene?
         
         switch app {
+        case .calendar:
+            appScene = CalendarScene(fileNamed: "CalendarScene")
+        case .photos:
+            appScene = PhotosScene(fileNamed: "PhotosScene")
         case .camera:
             appScene = CameraScene(fileNamed: "CameraScene")
         case .clock:

@@ -35,13 +35,18 @@ class CameraScene: SKScene {
     var menuButtons = [SKShapeNode?]()
     var menuButtonsName = [String]()
     
-    
+    var cameraViewNode: SKSpriteNode?
+    var lastPictureTakenNode: SKSpriteNode?
     var pickerViewNode: SKSpriteNode?
     var upperViewNode: SKSpriteNode?
     
     override func didMove(to view: SKView) {
         
         setUpButtons()
+        
+        cameraViewNode = self.childNode(withName: "cameraViewNode") as? SKSpriteNode
+        lastPictureTakenNode = self.childNode(withName: "lastPictureTakenNode") as? SKSpriteNode
+        lastPictureTakenNode?.alpha = 0
         
         // Picker View Rotation
         rotationAngle = -90 * (.pi/180)
@@ -71,23 +76,26 @@ class CameraScene: SKScene {
                     scene.scaleMode = .aspectFill
                     
                     // Present the scene
+                    pickerView.removeFromSuperview()
                     self.view?.presentScene(scene)
                 }
             case "startButton":
                 print("startButton")
             case "cameraButton":
                 numberOfPictures += 1
-                UIView.animate(withDuration: 0.3, animations: {
-                    self.cameraShotView.alpha = 1
-                    self.lastPictureTaken.alpha = 0
-                }, completion: { (finished) in
-                    
-                    if finished {
-                        self.cameraShotView.alpha = 0
-                        self.lastPictureTaken.alpha = 1
-                    }
-                    
+                
+                let colorize = SKAction.colorize(with: .black, colorBlendFactor: 1, duration: 0.2)
+                let colorizeLastPic = SKAction.colorize(with: .black, colorBlendFactor: 1, duration: 0.2)
+                cameraViewNode?.run(colorize, completion: {
+                    self.lastPictureTakenNode?.alpha = 1
+                    let colorizeUndo = SKAction.colorize(withColorBlendFactor: 0, duration: 0.2)
+                    self.cameraViewNode?.run(colorizeUndo)
                 })
+                lastPictureTakenNode?.run(colorizeLastPic, completion: {
+                    let colorizeLastPicUndo = SKAction.colorize(withColorBlendFactor: 0, duration: 0.2)
+                    self.lastPictureTakenNode?.run(colorizeLastPicUndo)
+                })
+                
             default:
                 return
             }
