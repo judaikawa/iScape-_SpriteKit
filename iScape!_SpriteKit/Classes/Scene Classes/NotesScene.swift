@@ -37,10 +37,17 @@ class NotesScene: SKScene {
     let notesDetails = ["Wednesday        Hi! My name is Juliana, I'm 21 years old...", "15/03/18        I'm very excited for WWDC18! It's..."]
     let notesText = ["Hi! My name is Juliana, I'm 21 years old, I'm from Brazil and I am a undergraduate student of Statistics and a member of Apple Developer Academy, where I learned about Swift programming and started to develop my own apps.", "I'm very excited for WWDC18! It's going to be awesome!"]
     
+    var characterTextLabelNode: SKLabelNode?
     
     override func didMove(to view: SKView) {
         
         setUpButtons()
+        
+        // Character text
+        characterTextLabelNode = self.childNode(withName: "grayViewNode")?.childNode(withName: "baloonNode")?.childNode(withName: "characterTextLabelNode") as? SKLabelNode
+        characterTextLabelNode?.text = ""
+        characterTextLabelNode?.preferredMaxLayoutWidth = 230
+        SKLabelNode.animateText(label: characterTextLabelNode!, newText: "We can get to know who this phone belongs to!", characterDelay: characterTextDelay)
         
         // TableView
         tableViewNode = self.childNode(withName: "tableViewNode") as? SKSpriteNode

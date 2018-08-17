@@ -36,9 +36,23 @@ class PhotosScene: SKScene {
     var collectionViewNode: SKSpriteNode?
     var navBarNode: SKSpriteNode?
     
+    var characterTextLabelNode: SKLabelNode?
+    
     override func didMove(to view: SKView) {
         
         setUpButtons()
+        
+        // Character text
+        var text = ""
+        characterTextLabelNode = self.childNode(withName: "grayViewNode")?.childNode(withName: "baloonNode")?.childNode(withName: "characterTextLabelNode") as? SKLabelNode
+        characterTextLabelNode?.text = ""
+        characterTextLabelNode?.preferredMaxLayoutWidth = 230
+        if numberOfPictures > 0 {
+            text = "We are filling the library with glitch pictures..."
+        } else {
+            text = "She looks like a cool girl!"
+        }
+        SKLabelNode.animateText(label: characterTextLabelNode!, newText: text, characterDelay: characterTextDelay)
         
         collectionViewNode = self.childNode(withName: "collectionViewNode") as? SKSpriteNode
         navBarNode = self.childNode(withName: "navBarNode") as? SKSpriteNode

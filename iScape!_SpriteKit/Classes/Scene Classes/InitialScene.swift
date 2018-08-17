@@ -46,7 +46,7 @@ class InitialScene: SKScene {
         textOnBaloonNode?.numberOfLines = 3
         textOnBaloonNode?.horizontalAlignmentMode = .center
         textOnBaloonNode?.verticalAlignmentMode = .center
-        SKLabelNode.animateText(label: textOnBaloonNode!, newText: "Wh... Where..\nWhere am I?!?\n .     .     .", characterDelay: 0.1) { (finished) in
+        SKLabelNode.animateText(label: textOnBaloonNode!, newText: "Wh... Where..\nWhere am I?!?\n   .       .       .", characterDelay: characterTextDelay) { (finished) in
 
             let fadeIn = SKAction.fadeIn(withDuration: 2)
             self.pressToStartNode?.run(fadeIn)

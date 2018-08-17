@@ -60,9 +60,17 @@ class CalendarScene: SKScene {
 
     let daysOfMonths = ["sundayDay", "mondayDay", "tuesdayDay", "wednesdayDay", "thursdayDay", "fridayDay", "saturdayDay"]
     
+    var characterTextLabelNode: SKLabelNode?
+    
     override func didMove(to view: SKView) {
         
         setUpButtons()
+        
+        // Character text
+        characterTextLabelNode = self.childNode(withName: "grayViewNode")?.childNode(withName: "baloonNode")?.childNode(withName: "characterTextLabelNode") as? SKLabelNode
+        characterTextLabelNode?.text = ""
+        characterTextLabelNode?.preferredMaxLayoutWidth = 230
+        SKLabelNode.animateText(label: characterTextLabelNode!, newText: "How weird... Is this a hint?!", characterDelay: characterTextDelay)
         
         // Day of month
         daysOfMonthsNodes = [sundayDay, mondayDay, tuesdayDay, wednesdayDay, thursdayDay, fridayDay, saturdayDay]

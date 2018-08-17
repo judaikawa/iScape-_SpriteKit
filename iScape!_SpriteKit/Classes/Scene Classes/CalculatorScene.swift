@@ -41,12 +41,20 @@ class CalculatorScene: SKScene {
     var result: Float?
     var operat: String?
     
+    var characterTextLabelNode: SKLabelNode?
+    
     override func didMove(to view: SKView) {
         
         resultLabelNode = self.childNode(withName: "resultLabelNode") as? SKLabelNode
         resultLabelNode?.horizontalAlignmentMode = .right
         
         setUpButtons()
+        
+        // Character text
+        characterTextLabelNode = self.childNode(withName: "grayViewNode")?.childNode(withName: "baloonNode")?.childNode(withName: "characterTextLabelNode") as? SKLabelNode
+        characterTextLabelNode?.text = ""
+        characterTextLabelNode?.preferredMaxLayoutWidth = 230
+        SKLabelNode.animateText(label: characterTextLabelNode!, newText: "Ugh, I hate math... But go ahead if you want to", characterDelay: characterTextDelay)
         
     }
     

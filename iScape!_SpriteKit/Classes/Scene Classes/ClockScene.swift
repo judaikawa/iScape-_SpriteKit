@@ -33,9 +33,17 @@ class ClockScene: SKScene {
     var navBarNode: SKSpriteNode?
     let tableView = UITableView()
     
+    var characterTextLabelNode: SKLabelNode?
+    
     override func didMove(to view: SKView) {
         
         setUpButtons()
+        
+        // Character text
+        characterTextLabelNode = self.childNode(withName: "grayViewNode")?.childNode(withName: "baloonNode")?.childNode(withName: "characterTextLabelNode") as? SKLabelNode
+        characterTextLabelNode?.text = ""
+        characterTextLabelNode?.preferredMaxLayoutWidth = 230
+        SKLabelNode.animateText(label: characterTextLabelNode!, newText: "Woah it's getting late! I need to go home...", characterDelay: characterTextDelay)
         
     }
     

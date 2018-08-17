@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A321F6302126DF6C007AA154 /* MailScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = A321F62F2126DF6C007AA154 /* MailScene.sks */; };
+		A321F6322126DF78007AA154 /* MailScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = A321F6312126DF78007AA154 /* MailScene.swift */; };
+		A321F6342126F731007AA154 /* Variables.swift in Sources */ = {isa = PBXBuildFile; fileRef = A321F6332126F731007AA154 /* Variables.swift */; };
 		A33EE6B22122FD3600420ED0 /* 8-bit pusab.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E9E74B69211C805A000560EA /* 8-bit pusab.ttf */; };
 		A33EE6B42123352900420ED0 /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A33EE6B32123352900420ED0 /* Extension.swift */; };
 		A33EE6B621233E9500420ED0 /* MessagesScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = A33EE6B521233E9500420ED0 /* MessagesScene.sks */; };
@@ -23,6 +26,8 @@
 		A3BBEDB52124CF79009865BB /* NotesScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3BBEDB42124CF79009865BB /* NotesScene.swift */; };
 		A3BBEDB72124D316009865BB /* ClockScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = A3BBEDB62124D316009865BB /* ClockScene.sks */; };
 		A3BBEDB92124D31E009865BB /* ClockScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3BBEDB82124D31E009865BB /* ClockScene.swift */; };
+		A3CC292021270FE9007918C6 /* StartMenuScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = A3CC291F21270FE9007918C6 /* StartMenuScene.sks */; };
+		A3CC29222127118B007918C6 /* StartMenuScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3CC29212127118B007918C6 /* StartMenuScene.swift */; };
 		A3FBB0312124BF4C008F1E9A /* SKButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3FBB0302124BF4C008F1E9A /* SKButton.swift */; };
 		E9E74B4B211A3F91000560EA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E74B4A211A3F91000560EA /* AppDelegate.swift */; };
 		E9E74B4F211A3F91000560EA /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = E9E74B4E211A3F91000560EA /* Actions.sks */; };
@@ -37,6 +42,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A321F62F2126DF6C007AA154 /* MailScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = MailScene.sks; sourceTree = "<group>"; };
+		A321F6312126DF78007AA154 /* MailScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MailScene.swift; sourceTree = "<group>"; };
+		A321F6332126F731007AA154 /* Variables.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Variables.swift; sourceTree = "<group>"; };
 		A33EE6B32123352900420ED0 /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
 		A33EE6B521233E9500420ED0 /* MessagesScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = MessagesScene.sks; sourceTree = "<group>"; };
 		A33EE6B72123413400420ED0 /* MessagesScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesScene.swift; sourceTree = "<group>"; };
@@ -52,6 +60,8 @@
 		A3BBEDB42124CF79009865BB /* NotesScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesScene.swift; sourceTree = "<group>"; };
 		A3BBEDB62124D316009865BB /* ClockScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = ClockScene.sks; sourceTree = "<group>"; };
 		A3BBEDB82124D31E009865BB /* ClockScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClockScene.swift; sourceTree = "<group>"; };
+		A3CC291F21270FE9007918C6 /* StartMenuScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = StartMenuScene.sks; sourceTree = "<group>"; };
+		A3CC29212127118B007918C6 /* StartMenuScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartMenuScene.swift; sourceTree = "<group>"; };
 		A3FBB0302124BF4C008F1E9A /* SKButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKButton.swift; sourceTree = "<group>"; };
 		E9E74B47211A3F91000560EA /* iScape!_SpriteKit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "iScape!_SpriteKit.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E9E74B4A211A3F91000560EA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -124,6 +134,8 @@
 				A37D523D2125901A00F86810 /* CameraScene.sks */,
 				A37D524121259D7A00F86810 /* PhotosScene.sks */,
 				A37D52452125AAE200F86810 /* CalendarScene.sks */,
+				A321F62F2126DF6C007AA154 /* MailScene.sks */,
+				A3CC291F21270FE9007918C6 /* StartMenuScene.sks */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -132,8 +144,9 @@
 			isa = PBXGroup;
 			children = (
 				A33EE6B32123352900420ED0 /* Extension.swift */,
-				E9E74B66211A42A1000560EA /* Scene Classes */,
+				A321F6332126F731007AA154 /* Variables.swift */,
 				A3FBB0302124BF4C008F1E9A /* SKButton.swift */,
+				E9E74B66211A42A1000560EA /* Scene Classes */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -150,6 +163,8 @@
 				A37D523F212590A400F86810 /* CameraScene.swift */,
 				A37D524321259D8900F86810 /* PhotosScene.swift */,
 				A37D52472125AAEB00F86810 /* CalendarScene.swift */,
+				A321F6312126DF78007AA154 /* MailScene.swift */,
+				A3CC29212127118B007918C6 /* StartMenuScene.swift */,
 			);
 			path = "Scene Classes";
 			sourceTree = "<group>";
@@ -214,11 +229,13 @@
 			files = (
 				A33EE6BA21234FE600420ED0 /* CalculatorScene.sks in Resources */,
 				A37D523E2125901A00F86810 /* CameraScene.sks in Resources */,
+				A3CC292021270FE9007918C6 /* StartMenuScene.sks in Resources */,
 				A37D52462125AAE200F86810 /* CalendarScene.sks in Resources */,
 				E9E74B56211A3F91000560EA /* Main.storyboard in Resources */,
 				E9E74B58211A3F92000560EA /* Assets.xcassets in Resources */,
 				E9E74B64211A4292000560EA /* MainScene.sks in Resources */,
 				A33EE6B22122FD3600420ED0 /* 8-bit pusab.ttf in Resources */,
+				A321F6302126DF6C007AA154 /* MailScene.sks in Resources */,
 				E9E74B6C211C9B0E000560EA /* InitialScene.sks in Resources */,
 				E9E74B5B211A3F92000560EA /* LaunchScreen.storyboard in Resources */,
 				A37D524221259D7A00F86810 /* PhotosScene.sks in Resources */,
@@ -236,6 +253,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A3CC29222127118B007918C6 /* StartMenuScene.swift in Sources */,
 				A33EE6B82123413400420ED0 /* MessagesScene.swift in Sources */,
 				A33EE6B42123352900420ED0 /* Extension.swift in Sources */,
 				E9E74B68211A42C2000560EA /* MainScene.swift in Sources */,
@@ -245,10 +263,12 @@
 				A3BBEDB92124D31E009865BB /* ClockScene.swift in Sources */,
 				A37D524421259D8900F86810 /* PhotosScene.swift in Sources */,
 				A33EE6BC2123506700420ED0 /* CalculatorScene.swift in Sources */,
+				A321F6342126F731007AA154 /* Variables.swift in Sources */,
 				E9E74B53211A3F91000560EA /* GameViewController.swift in Sources */,
 				A37D52482125AAEB00F86810 /* CalendarScene.swift in Sources */,
 				E9E74B4B211A3F91000560EA /* AppDelegate.swift in Sources */,
 				A3BBEDB52124CF79009865BB /* NotesScene.swift in Sources */,
+				A321F6322126DF78007AA154 /* MailScene.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

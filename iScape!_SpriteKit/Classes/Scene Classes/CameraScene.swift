@@ -40,9 +40,17 @@ class CameraScene: SKScene {
     var pickerViewNode: SKSpriteNode?
     var upperViewNode: SKSpriteNode?
     
+    var characterTextLabelNode: SKLabelNode?
+    
     override func didMove(to view: SKView) {
         
         setUpButtons()
+        
+        // Character text
+        characterTextLabelNode = self.childNode(withName: "grayViewNode")?.childNode(withName: "baloonNode")?.childNode(withName: "characterTextLabelNode") as? SKLabelNode
+        characterTextLabelNode?.text = ""
+        characterTextLabelNode?.preferredMaxLayoutWidth = 230
+        SKLabelNode.animateText(label: characterTextLabelNode!, newText: "Woah, this is weird... Seems like this camera is broken...", characterDelay: characterTextDelay)
         
         cameraViewNode = self.childNode(withName: "cameraViewNode") as? SKSpriteNode
         lastPictureTakenNode = self.childNode(withName: "lastPictureTakenNode") as? SKSpriteNode

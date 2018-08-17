@@ -71,8 +71,23 @@ class MainScene: SKScene, SKPhysicsContactDelegate {
     // Menu Buttons
     var menuButtons = [SKShapeNode?]()
     var menuButtonsName = [String]()
+    
+    var characterTextLabelNode: SKLabelNode?
+    
+    // Start Menu
+    var startGoToMenu = false
+    let startMenuView = UIView()
+    let startOptionMenuView = UIView()
+    let textOptionLabel = UILabel()
+    let triangleSelected = UIImageView()
 
     override func didMove(to view: SKView) {
+        
+        // Character text
+        characterTextLabelNode = self.childNode(withName: "grayViewNode")?.childNode(withName: "baloonNode")?.childNode(withName: "characterTextLabelNode") as? SKLabelNode
+        
+        characterTextLabelNode?.text = ""
+        characterTextLabelNode?.preferredMaxLayoutWidth = 230
         
         // If previous scene is Initial Scene, present with actions
         blackViewNode = self.childNode(withName: "blackViewNode") as? SKSpriteNode
@@ -81,9 +96,14 @@ class MainScene: SKScene, SKPhysicsContactDelegate {
             blackViewNode?.alpha = 1
             let colorize = SKAction.colorize(with: UIColor.white, colorBlendFactor: 2, duration: 2)
             let fadeOut = SKAction.fadeOut(withDuration: 2)
-            blackViewNode?.run(SKAction.sequence([colorize, fadeOut]))
+            blackViewNode?.run(colorize, completion: {
+                self.blackViewNode?.run(fadeOut)
+                SKLabelNode.animateText(label: self.characterTextLabelNode!, newText: "Wh-What is happening? A-Am I in a phone?!?", characterDelay: characterTextDelay)
+            })
+        } else {
+            SKLabelNode.animateText(label: characterTextLabelNode!, newText: "I wonder whose phone is this...", characterDelay: characterTextDelay)
         }
-        
+
         // Player position
         print(playerXPosition)
         print(playerYPosition)
@@ -129,6 +149,22 @@ class MainScene: SKScene, SKPhysicsContactDelegate {
                 walk(dir: .right, numberOfTouches: touch.tapCount)
             case "leftButton":
                 walk(dir: .left, numberOfTouches: touch.tapCount)
+            case "mailApp":
+                walkTo(app: mailApp)
+            case "calendarApp":
+                walkTo(app: calendarApp)
+            case "photosApp":
+                walkTo(app: photosApp)
+            case "notesApp":
+                walkTo(app: notesApp)
+            case "clockApp":
+                walkTo(app: clockApp)
+            case "cameraApp":
+                walkTo(app: cameraApp)
+            case "calculatorApp":
+                walkTo(app: calculatorApp)
+            case "messageApp":
+                walkTo(app: messageApp)
             case "aButton":
                 goToApp()
             case "bButton":
@@ -142,7 +178,13 @@ class MainScene: SKScene, SKPhysicsContactDelegate {
             case "selectButton":
                 print("selectButton")
             case "startButton":
-                print("startButton")
+                if let scene = StartMenuScene(fileNamed: "StartMenuScene") {
+                    // Set the scale mode to scale to fit the window
+                    scene.scaleMode = .aspectFill
+                    
+                    // Present the scene
+                    self.view?.presentScene(scene)
+                }
             default:
                 return
             }
@@ -151,19 +193,80 @@ class MainScene: SKScene, SKPhysicsContactDelegate {
         
     }
     
-    func walk(dir: Direction, numberOfTouches: Int) {
+    func walkTo(app: SKSpriteNode?) {
         
-        let step: CGFloat = 20
+        let pic1: UIImage?
+        let pic2: UIImage?
+        
+        let pic3: UIImage?
+        let pic4: UIImage?
+        
+        let diff1 = (player?.position.x)! - (app?.position.x)!
+        let diff2 = (player?.position.y)! - (app?.position.y)!
+        
+        if (player?.position.x)! < (app?.position.x)! {
+            // Player at left of app
+            pic1 = #imageLiteral(resourceName: "walk-right2")
+            pic2 = #imageLiteral(resourceName: "walk-right3")
+        } else {
+            // Player at right of app
+            pic1 = #imageLiteral(resourceName: "walk-left2")
+            pic2 = #imageLiteral(resourceName: "walk-left3")
+        }
+        
+        if (player?.position.y)! < (app?.position.y)! {
+            // Player at bottom of app
+            pic3 = #imageLiteral(resourceName: "walk-back2")
+            pic4 = #imageLiteral(resourceName: "walk-back3")
+        } else {
+            // Player at top of app
+            pic3 = #imageLiteral(resourceName: "walk-front2")
+            pic4 = #imageLiteral(resourceName: "walk-front3")
+        }
+        
+        let x = app?.position.x
+        let y = app?.position.y
+        
+        var duration1: TimeInterval = 2
+        var duration2: TimeInterval = 2
+        var count1 = 5
+        var count2 = 5
+        
+        if diff1 < CGFloat(10) && diff1 > CGFloat(-10) {
+            duration1 = 0
+            count1 = 0
+        }
+        
+        if diff2 < CGFloat(10) && diff2 > CGFloat(-10) {
+            duration2 = 0
+            count2 = 0
+        }
+        
+        
+        let pictureAction = SKAction.repeat(SKAction.animate(with: [SKTexture(image: pic1!), SKTexture(image: pic2!)], timePerFrame: 0.2), count: count1)
+        let moveAction = SKAction.moveTo(x: x!, duration: duration1)
+        player?.run(SKAction.group([pictureAction, moveAction]), completion: {
+            let pictureAction = SKAction.repeat(SKAction.animate(with: [SKTexture(image: pic3!), SKTexture(image: pic4!)], timePerFrame: 0.2), count: count2)
+            let moveAction = SKAction.moveTo(y: y!, duration: duration2)
+            self.player?.run(SKAction.group([pictureAction, moveAction]), completion: {
+                self.player?.texture = SKTexture(image: #imageLiteral(resourceName: "walk-front1"))
+            })
+        })
+
+        
+    }
+    
+    func walk(dir: Direction, numberOfTouches: Int) {
         
         switch dir {
         case .up:
-            playerAction(from: #imageLiteral(resourceName: "walk-back2"), or: #imageLiteral(resourceName: "walk-back3"), to: #imageLiteral(resourceName: "walk-back1"), x: 0, y: step, number: numberOfTouches)
+            playerAction(from: #imageLiteral(resourceName: "walk-back2"), or: #imageLiteral(resourceName: "walk-back3"), to: #imageLiteral(resourceName: "walk-back1"), x: 0, y: characterStep, number: numberOfTouches)
         case .down:
-            playerAction(from: #imageLiteral(resourceName: "walk-front2"), or: #imageLiteral(resourceName: "walk-front3"), to: #imageLiteral(resourceName: "walk-front1"), x: 0, y: -step, number: numberOfTouches)
+            playerAction(from: #imageLiteral(resourceName: "walk-front2"), or: #imageLiteral(resourceName: "walk-front3"), to: #imageLiteral(resourceName: "walk-front1"), x: 0, y: -characterStep, number: numberOfTouches)
         case .right:
-            playerAction(from: #imageLiteral(resourceName: "walk-right2"), or: #imageLiteral(resourceName: "walk-right3"), to: #imageLiteral(resourceName: "walk-right1"), x: step, y: 0, number: numberOfTouches)
+            playerAction(from: #imageLiteral(resourceName: "walk-right2"), or: #imageLiteral(resourceName: "walk-right3"), to: #imageLiteral(resourceName: "walk-right1"), x: characterStep, y: 0, number: numberOfTouches)
         case .left:
-            playerAction(from: #imageLiteral(resourceName: "walk-left2"), or: #imageLiteral(resourceName: "walk-left3"), to: #imageLiteral(resourceName: "walk-left1"), x: -step, y: 0, number: numberOfTouches)
+            playerAction(from: #imageLiteral(resourceName: "walk-left2"), or: #imageLiteral(resourceName: "walk-left3"), to: #imageLiteral(resourceName: "walk-left1"), x: -characterStep, y: 0, number: numberOfTouches)
         }
         
     }
@@ -190,7 +293,7 @@ class MainScene: SKScene, SKPhysicsContactDelegate {
         playerYPosition = (player?.position.y)!
         
         if (player?.intersects(mailApp!))! {
-            print("mailApp")
+            presentApp(app: .mail)
         } else if (player?.intersects(calendarApp!))! {
             presentApp(app: .calendar)
         } else if (player?.intersects(photosApp!))! {
@@ -214,6 +317,8 @@ class MainScene: SKScene, SKPhysicsContactDelegate {
         var appScene: SKScene?
         
         switch app {
+        case .mail:
+            appScene = MailScene(fileNamed: "MailScene")
         case .calendar:
             appScene = CalendarScene(fileNamed: "CalendarScene")
         case .photos:
@@ -228,8 +333,6 @@ class MainScene: SKScene, SKPhysicsContactDelegate {
             appScene = CalculatorScene(fileNamed: "CalculatorScene")
         case .messages:
             appScene = MessagesScene(fileNamed: "MessagesScene")
-        default:
-            print("to-do")
         }
         
         let fadeIn = SKAction.fadeIn(withDuration: 2)

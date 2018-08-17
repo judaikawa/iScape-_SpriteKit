@@ -10,9 +10,6 @@ import Foundation
 import UIKit
 import SpriteKit
 
-public let pixelArtFontName = "8-bit pusab"
-public var numberOfPictures = 0
-
 // Animate text letter by letter
 extension SKLabelNode {
     
@@ -31,6 +28,20 @@ extension SKLabelNode {
                         finish = true
                         completion(finish)
                     }
+                }
+            }
+        }
+    }
+    
+    public static func animateText(label: SKLabelNode, newText: String, characterDelay: TimeInterval) {
+        
+        DispatchQueue.main.async {
+            
+            label.text = ""
+            
+            for (index, character) in newText.enumerated() {
+                DispatchQueue.main.asyncAfter(deadline: .now() + characterDelay * Double(index)) {
+                    label.text?.append(character)
                 }
             }
         }
@@ -64,5 +75,6 @@ extension UIView {
         }
     }
 }
+
 
 
