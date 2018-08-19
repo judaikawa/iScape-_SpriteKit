@@ -93,9 +93,6 @@ extension ClockListScene: UITableViewDataSource, UITableViewDelegate {
             city = city.replacingOccurrences(of: "_", with: " ")
         }
         
-        self.myDelegate?.stateChosenInList(stateIdentifier: TimeZone.knownTimeZoneIdentifiers[indexPath.row], city: city)
-        tableView.deselectRow(at: indexPath, animated: true)
-        
         if let scene = ClockScene(fileNamed: "ClockScene") {
             // Set the scale mode to scale to fit the window
             scene.scaleMode = .aspectFill
@@ -103,8 +100,9 @@ extension ClockListScene: UITableViewDataSource, UITableViewDelegate {
             // Present the scene
             tableView.removeFromSuperview()
             self.view?.presentScene(scene)
+            self.myDelegate?.stateChosenInList(stateIdentifier: TimeZone.knownTimeZoneIdentifiers[indexPath.row], city: city)
+            tableView.deselectRow(at: indexPath, animated: true)
         }
-        
         
         
     }

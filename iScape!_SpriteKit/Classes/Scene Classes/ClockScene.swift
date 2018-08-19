@@ -45,7 +45,6 @@ class ClockScene: SKScene, StateChosenDelegate {
     var currentStateDateString = ["", ""]
     var isPointShown = true
     var identifierArray = ["America/Sao_Paulo","America/Los_Angeles"]
-    let clockList = ClockListScene()
     
     func stateChosenInList(stateIdentifier: String?, city: String?) {
         stateArray.append(city!)
@@ -56,8 +55,6 @@ class ClockScene: SKScene, StateChosenDelegate {
     }
     
     override func didMove(to view: SKView) {
-        
-        clockList.myDelegate = self
         
         setUpButtons()
         
@@ -101,6 +98,7 @@ class ClockScene: SKScene, StateChosenDelegate {
             // Present the scene
             tableView.removeFromSuperview()
             self.view?.presentScene(scene)
+            scene.myDelegate = self
         }
         
     }
