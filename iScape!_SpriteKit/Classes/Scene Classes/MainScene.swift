@@ -227,10 +227,10 @@ class MainScene: SKScene, SKPhysicsContactDelegate {
         let x = app?.position.x
         let y = app?.position.y
         
-        var duration1: TimeInterval = 2
-        var duration2: TimeInterval = 2
-        var count1 = 5
-        var count2 = 5
+        var duration1: TimeInterval = 1.5
+        var duration2: TimeInterval = 1.5
+        var count1 = 4
+        var count2 = 4
         
         if diff1 < CGFloat(10) && diff1 > CGFloat(-10) {
             duration1 = 0

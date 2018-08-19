@@ -39,12 +39,8 @@ class ClockScene: SKScene, StateChosenDelegate {
     var addButtonNode: SKSpriteNode?
     
     var detailViewController: UIViewController?
-    var stateArray = ["Sao Paulo", "San Jose"]
     weak var timer: Timer?
-    var dateArray = ["", ""]
-    var currentStateDateString = ["", ""]
     var isPointShown = true
-    var identifierArray = ["America/Sao_Paulo","America/Los_Angeles"]
     
     func stateChosenInList(stateIdentifier: String?, city: String?) {
         stateArray.append(city!)
@@ -63,9 +59,14 @@ class ClockScene: SKScene, StateChosenDelegate {
         
         // Character text
         characterTextLabelNode = self.childNode(withName: "grayViewNode")?.childNode(withName: "baloonNode")?.childNode(withName: "characterTextLabelNode") as? SKLabelNode
-        characterTextLabelNode?.text = ""
         characterTextLabelNode?.preferredMaxLayoutWidth = 230
-        SKLabelNode.animateText(label: characterTextLabelNode!, newText: "Woah it's getting late! I need to go home...", characterDelay: characterTextDelay)
+        
+        if self.userData?.value(forKey: "previousScene") != nil {
+            characterTextLabelNode?.text = "Woah it's getting late! I need to go home..."
+        } else {
+            characterTextLabelNode?.text = ""
+            SKLabelNode.animateText(label: characterTextLabelNode!, newText: "Woah it's getting late! I need to go home...", characterDelay: characterTextDelay)
+        }
         
         // Date
         setupDate()
@@ -98,7 +99,7 @@ class ClockScene: SKScene, StateChosenDelegate {
             // Present the scene
             tableView.removeFromSuperview()
             self.view?.presentScene(scene)
-            scene.myDelegate = self
+            
         }
         
     }

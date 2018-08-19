@@ -36,9 +36,20 @@ class ClockListScene: SKScene {
     
     weak var myDelegate: StateChosenDelegate?
     
+    var characterTextLabelNode: SKLabelNode?
+    var cancelNode: SKLabelNode?
+    
     override func didMove(to view: SKView) {
         
         setUpButtons()
+        
+        cancelNode = self.childNode(withName: "cancelNode") as? SKLabelNode
+        
+        // Character text
+        characterTextLabelNode = self.childNode(withName: "grayViewNode")?.childNode(withName: "baloonNode")?.childNode(withName: "characterTextLabelNode") as? SKLabelNode
+        characterTextLabelNode?.preferredMaxLayoutWidth = 230
+        characterTextLabelNode?.text = "Woah it's getting late! I need to go home..."
+
         
         // TableView
         tableViewNode = self.childNode(withName: "tableViewNode") as? SKSpriteNode
@@ -48,6 +59,35 @@ class ClockListScene: SKScene {
         tableView.dataSource = self
         tableView.backgroundColor = .black
         self.scene?.view?.addSubview(tableView)
+        
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        
+        for touch in touches {
+            
+            let location = touch.location(in: self)
+            
+            switch atPoint(location).name {
+            case "bButton", "cancelNode":
+                if let scene = ClockScene(fileNamed: "ClockScene") {
+                    // Set the scale mode to scale to fit the window
+                    scene.scaleMode = .aspectFill
+                    
+                    scene.userData = NSMutableDictionary()
+                    scene.userData?.setObject("InitialScene", forKey: "previousScene" as NSCopying)
+                    
+                    // Present the scene
+                    tableView.removeFromSuperview()
+                    self.view?.presentScene(scene)
+                }
+            case "startButton":
+                print("startButton")
+            default:
+                return
+            }
+            
+        }
         
     }
     
@@ -97,9 +137,13 @@ extension ClockListScene: UITableViewDataSource, UITableViewDelegate {
             // Set the scale mode to scale to fit the window
             scene.scaleMode = .aspectFill
             
+            scene.userData = NSMutableDictionary()
+            scene.userData?.setObject("InitialScene", forKey: "previousScene" as NSCopying)
+            
             // Present the scene
             tableView.removeFromSuperview()
             self.view?.presentScene(scene)
+            self.myDelegate = scene
             self.myDelegate?.stateChosenInList(stateIdentifier: TimeZone.knownTimeZoneIdentifiers[indexPath.row], city: city)
             tableView.deselectRow(at: indexPath, animated: true)
         }
