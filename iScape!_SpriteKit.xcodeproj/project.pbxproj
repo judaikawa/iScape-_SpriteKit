@@ -39,6 +39,8 @@
 		E9E74B68211A42C2000560EA /* MainScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E74B67211A42C2000560EA /* MainScene.swift */; };
 		E9E74B6C211C9B0E000560EA /* InitialScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = E9E74B6B211C9B0E000560EA /* InitialScene.sks */; };
 		E9E74B6E211C9B47000560EA /* InitialScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E74B6D211C9B47000560EA /* InitialScene.swift */; };
+		F75ED220212900780051E5B0 /* ClockListScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = F75ED21F212900780051E5B0 /* ClockListScene.swift */; };
+		F75ED222212907290051E5B0 /* ClockListScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = F75ED221212907290051E5B0 /* ClockListScene.sks */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -76,6 +78,8 @@
 		E9E74B69211C805A000560EA /* 8-bit pusab.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "8-bit pusab.ttf"; sourceTree = "<group>"; };
 		E9E74B6B211C9B0E000560EA /* InitialScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = InitialScene.sks; sourceTree = "<group>"; };
 		E9E74B6D211C9B47000560EA /* InitialScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialScene.swift; sourceTree = "<group>"; };
+		F75ED21F212900780051E5B0 /* ClockListScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClockListScene.swift; sourceTree = "<group>"; };
+		F75ED221212907290051E5B0 /* ClockListScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = ClockListScene.sks; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -131,6 +135,7 @@
 				A33EE6B921234FE600420ED0 /* CalculatorScene.sks */,
 				A3BBEDB22124CEED009865BB /* NotesScene.sks */,
 				A3BBEDB62124D316009865BB /* ClockScene.sks */,
+				F75ED221212907290051E5B0 /* ClockListScene.sks */,
 				A37D523D2125901A00F86810 /* CameraScene.sks */,
 				A37D524121259D7A00F86810 /* PhotosScene.sks */,
 				A37D52452125AAE200F86810 /* CalendarScene.sks */,
@@ -160,6 +165,7 @@
 				A33EE6BB2123506700420ED0 /* CalculatorScene.swift */,
 				A3BBEDB42124CF79009865BB /* NotesScene.swift */,
 				A3BBEDB82124D31E009865BB /* ClockScene.swift */,
+				F75ED21F212900780051E5B0 /* ClockListScene.swift */,
 				A37D523F212590A400F86810 /* CameraScene.swift */,
 				A37D524321259D8900F86810 /* PhotosScene.swift */,
 				A37D52472125AAEB00F86810 /* CalendarScene.swift */,
@@ -242,6 +248,7 @@
 				A33EE6B621233E9500420ED0 /* MessagesScene.sks in Resources */,
 				A3BBEDB72124D316009865BB /* ClockScene.sks in Resources */,
 				A3BBEDB32124CEED009865BB /* NotesScene.sks in Resources */,
+				F75ED222212907290051E5B0 /* ClockListScene.sks in Resources */,
 				E9E74B4F211A3F91000560EA /* Actions.sks in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -261,6 +268,7 @@
 				A3FBB0312124BF4C008F1E9A /* SKButton.swift in Sources */,
 				E9E74B6E211C9B47000560EA /* InitialScene.swift in Sources */,
 				A3BBEDB92124D31E009865BB /* ClockScene.swift in Sources */,
+				F75ED220212900780051E5B0 /* ClockListScene.swift in Sources */,
 				A37D524421259D8900F86810 /* PhotosScene.swift in Sources */,
 				A33EE6BC2123506700420ED0 /* CalculatorScene.swift in Sources */,
 				A321F6342126F731007AA154 /* Variables.swift in Sources */,
