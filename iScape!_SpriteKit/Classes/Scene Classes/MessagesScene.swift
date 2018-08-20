@@ -45,6 +45,8 @@ class MessagesScene: SKScene {
     
     override func didMove(to view: SKView) {
         
+        passedInMessagesApp = true
+
         setUpButtons()
         
         // Character text
@@ -75,12 +77,25 @@ class MessagesScene: SKScene {
                     // Set the scale mode to scale to fit the window
                     scene.scaleMode = .aspectFill
                     
+                    scene.userData = NSMutableDictionary()
+                    scene.userData?.setObject(App.messages, forKey: "previousScene" as NSCopying)
+                    
                     // Present the scene
                     tableView.removeFromSuperview()
                     self.view?.presentScene(scene)
                 }
             case "startButton":
-                print("startButton")
+                if let scene = StartMenuScene(fileNamed: "StartMenuScene") {
+                    // Set the scale mode to scale to fit the window
+                    scene.scaleMode = .aspectFill
+                    
+                    scene.userData = NSMutableDictionary()
+                    scene.userData?.setObject(App.messages, forKey: "previousScene" as NSCopying)
+                    
+                    // Present the scene
+                    tableView.removeFromSuperview()
+                    self.view?.presentScene(scene)
+                }
             default:
                 return
             }

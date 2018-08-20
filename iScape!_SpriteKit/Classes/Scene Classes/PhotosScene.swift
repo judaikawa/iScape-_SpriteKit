@@ -40,6 +40,8 @@ class PhotosScene: SKScene {
     
     override func didMove(to view: SKView) {
         
+        passedInPhotosApp = true
+        
         setUpButtons()
         
         // Character text
@@ -83,12 +85,25 @@ class PhotosScene: SKScene {
                     // Set the scale mode to scale to fit the window
                     scene.scaleMode = .aspectFill
                     
+                    scene.userData = NSMutableDictionary()
+                    scene.userData?.setObject(App.photos, forKey: "previousScene" as NSCopying)
+                    
                     // Present the scene
                     collectionView.removeFromSuperview()
                     self.view?.presentScene(scene)
                 }
             case "startButton":
-                print("startButton")
+                if let scene = StartMenuScene(fileNamed: "StartMenuScene") {
+                    // Set the scale mode to scale to fit the window
+                    scene.scaleMode = .aspectFill
+                    
+                    scene.userData = NSMutableDictionary()
+                    scene.userData?.setObject(App.photos, forKey: "previousScene" as NSCopying)
+                    
+                    // Present the scene
+                    collectionView.removeFromSuperview()
+                    self.view?.presentScene(scene)
+                }
             default:
                 return
             }

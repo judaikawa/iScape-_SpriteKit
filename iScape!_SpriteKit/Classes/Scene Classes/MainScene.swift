@@ -24,6 +24,7 @@ enum App {
     case camera
     case calculator
     case messages
+    case end
 }
 
 struct PhysicsCategory {
@@ -63,6 +64,7 @@ class MainScene: SKScene, SKPhysicsContactDelegate {
     var cameraApp: SKSpriteNode?
     var calculatorApp: SKSpriteNode?
     var messageApp: SKSpriteNode?
+    var appsNode = [App: SKSpriteNode?]()
     
     // Direction Buttons
     var dirButtons = [SKShapeNode?]()
@@ -80,8 +82,15 @@ class MainScene: SKScene, SKPhysicsContactDelegate {
     let startOptionMenuView = UIView()
     let textOptionLabel = UILabel()
     let triangleSelected = UIImageView()
+    
+    var sparkleNode: SKSpriteNode?
 
     override func didMove(to view: SKView) {
+        
+        // If end of game
+        sparkleNode = self.childNode(withName: "sparkleNode") as? SKSpriteNode
+        sparkleNode?.alpha = 0
+        finishGame()
         
         // Character text
         characterTextLabelNode = self.childNode(withName: "grayViewNode")?.childNode(withName: "baloonNode")?.childNode(withName: "characterTextLabelNode") as? SKLabelNode
@@ -91,7 +100,7 @@ class MainScene: SKScene, SKPhysicsContactDelegate {
         
         // If previous scene is Initial Scene, present with actions
         blackViewNode = self.childNode(withName: "blackViewNode") as? SKSpriteNode
-        if self.userData?.value(forKey: "previousScene") != nil {
+        if (self.userData?.value(forKey: "previousScene") as? String) != nil {
             // Presenting view
             blackViewNode?.alpha = 1
             let colorize = SKAction.colorize(with: UIColor.white, colorBlendFactor: 2, duration: 2)
@@ -101,12 +110,21 @@ class MainScene: SKScene, SKPhysicsContactDelegate {
                 SKLabelNode.animateText(label: self.characterTextLabelNode!, newText: "Wh-What is happening? A-Am I in a phone?!?", characterDelay: characterTextDelay)
             })
         } else {
-            SKLabelNode.animateText(label: characterTextLabelNode!, newText: "I wonder whose phone is this...", characterDelay: characterTextDelay)
+            
+            var text = ""
+            if passedInAllApps {
+                text = "Something is going on with the camera app."
+            } else {
+                if passedInNotesApp {
+                    text = "I need to find a way out..."
+                } else {
+                    text = "I wonder whose phone is this..."
+                }
+            }
+            
+            SKLabelNode.animateText(label: characterTextLabelNode!, newText: text, characterDelay: characterTextDelay)
+            
         }
-
-        // Player position
-        print(playerXPosition)
-        print(playerYPosition)
         
         // Player Node
         player = self.childNode(withName: "backgroundNode")?.childNode(withName: "player") as? SKSpriteNode
@@ -121,6 +139,14 @@ class MainScene: SKScene, SKPhysicsContactDelegate {
         calculatorApp = self.childNode(withName: "backgroundNode")?.childNode(withName: "calculatorApp") as? SKSpriteNode
         messageApp = self.childNode(withName: "backgroundNode")?.childNode(withName: "messageApp") as? SKSpriteNode
         
+        // Apps
+        appsNode = [.mail: mailApp, .calendar: calendarApp, .photos: photosApp, .camera: cameraApp, .clock: clockApp, .notes: notesApp, .calculator: calculatorApp, .messages: messageApp]
+        
+        if let previousApp = self.userData?.value(forKey: "previousScene") as? App {
+            self.player?.position.x = (appsNode[previousApp]!?.position.x)!
+            self.player?.position.y = (appsNode[previousApp]!?.position.y)!
+        }
+        
         // Background Node
         backgroundNode = self.childNode(withName: "backgroundNode") as? SKSpriteNode
         
@@ -130,6 +156,20 @@ class MainScene: SKScene, SKPhysicsContactDelegate {
         
         // Buttons
         setUpButtons()
+        
+    }
+    
+    func finishGame() {
+        let passedInApssArray = [passedInMailApp, passedInCalendarApp, passedInCalculatorApp, passedInNotesApp, passedInClockApp, passedInCameraApp, passedInPhotosApp, passedInMessagesApp]
+        
+        let numberOfAppsAccessed = passedInApssArray.filter({ (passed) -> Bool in
+            passed == true
+        }).count
+        
+        if numberOfAppsAccessed == 8 {
+            passedInAllApps = true
+            sparkleNode?.alpha = 1
+        }
         
     }
     
@@ -167,16 +207,6 @@ class MainScene: SKScene, SKPhysicsContactDelegate {
                 walkTo(app: messageApp)
             case "aButton":
                 goToApp()
-            case "bButton":
-                if let scene = InitialScene(fileNamed: "InitialScene") {
-                    // Set the scale mode to scale to fit the window
-                    scene.scaleMode = .aspectFill
-                    
-                    // Present the scene
-                    self.view?.presentScene(scene)
-                }
-            case "selectButton":
-                print("selectButton")
             case "startButton":
                 if let scene = StartMenuScene(fileNamed: "StartMenuScene") {
                     // Set the scale mode to scale to fit the window
@@ -303,7 +333,12 @@ class MainScene: SKScene, SKPhysicsContactDelegate {
         } else if (player?.intersects(clockApp!))! {
             presentApp(app: .clock)
         } else if (player?.intersects(cameraApp!))! {
-            presentApp(app: .camera)
+            if passedInAllApps {
+                presentApp(app: .end)
+            } else {
+                presentApp(app: .camera)
+            }
+            
         } else if (player?.intersects(calculatorApp!))! {
             presentApp(app: .calculator)
         } else if (player?.intersects(messageApp!))! {
@@ -333,19 +368,32 @@ class MainScene: SKScene, SKPhysicsContactDelegate {
             appScene = CalculatorScene(fileNamed: "CalculatorScene")
         case .messages:
             appScene = MessagesScene(fileNamed: "MessagesScene")
+        case .end:
+            appScene = EndGameScene(fileNamed: "EndGameScene")
         }
         
-        let fadeIn = SKAction.fadeIn(withDuration: 2)
-        blackViewNode?.color = UIColor.black
-        blackViewNode?.run(fadeIn, completion: {
+        if app == .end {
+            let transition = SKTransition.fade(with: .white, duration: 4)
             if let scene = appScene {
                 // Set the scale mode to scale to fit the window
                 scene.scaleMode = .aspectFill
                 
                 // Present the scene
-                self.view?.presentScene(scene)
+                self.view?.presentScene(scene, transition: transition)
             }
-        })
+        } else {
+            let fadeIn = SKAction.fadeIn(withDuration: 2)
+            blackViewNode?.color = UIColor.black
+            blackViewNode?.run(fadeIn, completion: {
+                if let scene = appScene {
+                    // Set the scale mode to scale to fit the window
+                    scene.scaleMode = .aspectFill
+                    
+                    // Present the scene
+                    self.view?.presentScene(scene)
+                }
+            })
+        }
         
     }
     

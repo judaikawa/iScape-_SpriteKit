@@ -41,6 +41,9 @@
 		E9E74B6E211C9B47000560EA /* InitialScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E74B6D211C9B47000560EA /* InitialScene.swift */; };
 		F75ED220212900780051E5B0 /* ClockListScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = F75ED21F212900780051E5B0 /* ClockListScene.swift */; };
 		F75ED222212907290051E5B0 /* ClockListScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = F75ED221212907290051E5B0 /* ClockListScene.sks */; };
+		F75ED2242129F9D90051E5B0 /* EndGameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = F75ED2232129F9D90051E5B0 /* EndGameScene.sks */; };
+		F75ED226212A0C880051E5B0 /* MyParticle.sks in Resources */ = {isa = PBXBuildFile; fileRef = F75ED225212A0C880051E5B0 /* MyParticle.sks */; };
+		F75ED228212A11730051E5B0 /* EndGameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = F75ED227212A11730051E5B0 /* EndGameScene.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -80,6 +83,9 @@
 		E9E74B6D211C9B47000560EA /* InitialScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialScene.swift; sourceTree = "<group>"; };
 		F75ED21F212900780051E5B0 /* ClockListScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClockListScene.swift; sourceTree = "<group>"; };
 		F75ED221212907290051E5B0 /* ClockListScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = ClockListScene.sks; sourceTree = "<group>"; };
+		F75ED2232129F9D90051E5B0 /* EndGameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = EndGameScene.sks; sourceTree = "<group>"; };
+		F75ED225212A0C880051E5B0 /* MyParticle.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = MyParticle.sks; sourceTree = "<group>"; };
+		F75ED227212A11730051E5B0 /* EndGameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndGameScene.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,6 +122,7 @@
 				E9E74B62211A427F000560EA /* Scenes */,
 				E9E74B65211A4298000560EA /* Classes */,
 				E9E74B4A211A3F91000560EA /* AppDelegate.swift */,
+				F75ED225212A0C880051E5B0 /* MyParticle.sks */,
 				E9E74B4E211A3F91000560EA /* Actions.sks */,
 				E9E74B52211A3F91000560EA /* GameViewController.swift */,
 				E9E74B54211A3F91000560EA /* Main.storyboard */,
@@ -141,6 +148,7 @@
 				A37D52452125AAE200F86810 /* CalendarScene.sks */,
 				A321F62F2126DF6C007AA154 /* MailScene.sks */,
 				A3CC291F21270FE9007918C6 /* StartMenuScene.sks */,
+				F75ED2232129F9D90051E5B0 /* EndGameScene.sks */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -171,6 +179,7 @@
 				A37D52472125AAEB00F86810 /* CalendarScene.swift */,
 				A321F6312126DF78007AA154 /* MailScene.swift */,
 				A3CC29212127118B007918C6 /* StartMenuScene.swift */,
+				F75ED227212A11730051E5B0 /* EndGameScene.swift */,
 			);
 			path = "Scene Classes";
 			sourceTree = "<group>";
@@ -237,11 +246,13 @@
 				A37D523E2125901A00F86810 /* CameraScene.sks in Resources */,
 				A3CC292021270FE9007918C6 /* StartMenuScene.sks in Resources */,
 				A37D52462125AAE200F86810 /* CalendarScene.sks in Resources */,
+				F75ED2242129F9D90051E5B0 /* EndGameScene.sks in Resources */,
 				E9E74B56211A3F91000560EA /* Main.storyboard in Resources */,
 				E9E74B58211A3F92000560EA /* Assets.xcassets in Resources */,
 				E9E74B64211A4292000560EA /* MainScene.sks in Resources */,
 				A33EE6B22122FD3600420ED0 /* 8-bit pusab.ttf in Resources */,
 				A321F6302126DF6C007AA154 /* MailScene.sks in Resources */,
+				F75ED226212A0C880051E5B0 /* MyParticle.sks in Resources */,
 				E9E74B6C211C9B0E000560EA /* InitialScene.sks in Resources */,
 				E9E74B5B211A3F92000560EA /* LaunchScreen.storyboard in Resources */,
 				A37D524221259D7A00F86810 /* PhotosScene.sks in Resources */,
@@ -276,6 +287,7 @@
 				A37D52482125AAEB00F86810 /* CalendarScene.swift in Sources */,
 				E9E74B4B211A3F91000560EA /* AppDelegate.swift in Sources */,
 				A3BBEDB52124CF79009865BB /* NotesScene.swift in Sources */,
+				F75ED228212A11730051E5B0 /* EndGameScene.swift in Sources */,
 				A321F6322126DF78007AA154 /* MailScene.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

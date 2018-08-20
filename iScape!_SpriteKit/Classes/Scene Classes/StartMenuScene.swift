@@ -37,7 +37,11 @@ class StartMenuScene: SKScene {
     var shareGameNode: SKLabelNode?
     var optionTextNode: SKLabelNode?
     
+    var appsScene = [App: SKScene?]()
+    
     override func didMove(to view: SKView) {
+        
+        appsScene = [.mail: MailScene(fileNamed: "MailScene"), .calendar: CalendarScene(fileNamed: "CalendarScene"), .photos: PhotosScene(fileNamed: "PhotosScene"), .camera: CameraScene(fileNamed: "CameraScene"), .clock: ClockScene(fileNamed: "ClockScene"), .notes: NotesScene(fileNamed: "NotesScene"), .calculator: CalculatorScene(fileNamed: "CalculatorScene"), .messages: MessagesScene(fileNamed: "MessagesScene")]
         
         setUpButtons()
         
@@ -70,13 +74,26 @@ class StartMenuScene: SKScene {
             case "bButton":
                 goBackToOptions()
             case "startButton":
-                if let scene = MainScene(fileNamed: "MainScene") {
-                    // Set the scale mode to scale to fit the window
-                    scene.scaleMode = .aspectFill
-                    
-                    // Present the scene
-                    self.view?.presentScene(scene)
+                
+                if let previousApp = self.userData?.value(forKey: "previousScene") as? App {
+                    if let scene = appsScene[previousApp]! {
+                        // Set the scale mode to scale to fit the window
+                        scene.scaleMode = .aspectFill
+                        
+                        // Present the scene
+                        self.view?.presentScene(scene)
+                    }
+                } else {
+                    if let scene = MainScene(fileNamed: "MainScene") {
+                        // Set the scale mode to scale to fit the window
+                        scene.scaleMode = .aspectFill
+                        
+                        // Present the scene
+                        self.view?.presentScene(scene)
+                    }
                 }
+                
+                
             default:
                 return
             }
@@ -113,7 +130,7 @@ class StartMenuScene: SKScene {
     
     func share() {
         let vc = self.view?.window?.rootViewController
-        let textToShare = "I just found an awesome game! Download iScape! on the App Store!"
+        let textToShare = "I just found an awesome game! Download iScape on the App Store!"
         let activityVC = UIActivityViewController(activityItems: [textToShare], applicationActivities: nil)
         
         vc?.present(activityVC, animated: true, completion: nil)

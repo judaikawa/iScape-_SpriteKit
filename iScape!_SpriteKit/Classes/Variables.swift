@@ -28,3 +28,8 @@ public var passedInCameraApp = false
 public var passedInPhotosApp = false
 public var passedInMessagesApp = false
 public var passedInAllApps = false
+
+
+
+
+

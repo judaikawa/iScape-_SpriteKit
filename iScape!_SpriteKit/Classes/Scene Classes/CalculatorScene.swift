@@ -45,6 +45,8 @@ class CalculatorScene: SKScene {
     
     override func didMove(to view: SKView) {
         
+        passedInCalculatorApp = true
+        
         resultLabelNode = self.childNode(withName: "resultLabelNode") as? SKLabelNode
         resultLabelNode?.horizontalAlignmentMode = .right
         
@@ -80,11 +82,23 @@ class CalculatorScene: SKScene {
                     // Set the scale mode to scale to fit the window
                     scene.scaleMode = .aspectFill
                     
+                    scene.userData = NSMutableDictionary()
+                    scene.userData?.setObject(App.calculator, forKey: "previousScene" as NSCopying)
+                    
                     // Present the scene
                     self.view?.presentScene(scene)
                 }
             case "startButton":
-                print("startButton")
+                if let scene = StartMenuScene(fileNamed: "StartMenuScene") {
+                    // Set the scale mode to scale to fit the window
+                    scene.scaleMode = .aspectFill
+                    
+                    scene.userData = NSMutableDictionary()
+                    scene.userData?.setObject(App.calculator, forKey: "previousScene" as NSCopying)
+                    
+                    // Present the scene
+                    self.view?.presentScene(scene)
+                }
             default:
                 return
             }
@@ -113,13 +127,19 @@ extension CalculatorScene {
             resultLabelNode?.text = String(number)
         } else {
             if n1 == nil && operat == nil {
-                resultLabelNode?.text = (resultLabelNode?.text)! + String(number)
+                if (resultLabelNode?.text?.count)! < 6 {
+                    resultLabelNode?.text = (resultLabelNode?.text)! + String(number)
+                }
+                
             } else {
                 if n3 == nil {
                     resultLabelNode?.text = String(number)
                     n3 = Float((resultLabelNode?.text)!)
                 } else {
-                    resultLabelNode?.text = (resultLabelNode?.text)! + String(number)
+                    if (resultLabelNode?.text?.count)! < 6 {
+                        resultLabelNode?.text = (resultLabelNode?.text)! + String(number)
+                    }
+                    
                 }
             }
         }
@@ -147,7 +167,10 @@ extension CalculatorScene {
         } else if operate == "." {
             if resultLabelNode?.text?.range(of: ".") == nil {
                 n3 = 0
-                resultLabelNode?.text = (resultLabelNode?.text)! + operate
+                if (resultLabelNode?.text?.count)! < 6 {
+                    resultLabelNode?.text = (resultLabelNode?.text)! + operate
+                }
+                
             }
         } else if operate == "=" {
             if n1 != nil && operat != nil {

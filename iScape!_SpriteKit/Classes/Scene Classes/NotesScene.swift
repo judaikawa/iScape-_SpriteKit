@@ -41,6 +41,8 @@ class NotesScene: SKScene {
     
     override func didMove(to view: SKView) {
         
+        passedInNotesApp = true
+        
         setUpButtons()
         
         // Character text
@@ -72,12 +74,25 @@ class NotesScene: SKScene {
                     // Set the scale mode to scale to fit the window
                     scene.scaleMode = .aspectFill
                     
+                    scene.userData = NSMutableDictionary()
+                    scene.userData?.setObject(App.notes, forKey: "previousScene" as NSCopying)
+                    
                     // Present the scene
                     tableView.removeFromSuperview()
                     self.view?.presentScene(scene)
                 }
             case "startButton":
-                print("startButton")
+                if let scene = StartMenuScene(fileNamed: "StartMenuScene") {
+                    // Set the scale mode to scale to fit the window
+                    scene.scaleMode = .aspectFill
+                    
+                    scene.userData = NSMutableDictionary()
+                    scene.userData?.setObject(App.notes, forKey: "previousScene" as NSCopying)
+                    
+                    // Present the scene
+                    tableView.removeFromSuperview()
+                    self.view?.presentScene(scene)
+                }
             default:
                 return
             }

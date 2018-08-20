@@ -64,6 +64,8 @@ class CalendarScene: SKScene {
     
     override func didMove(to view: SKView) {
         
+        passedInCalendarApp = true
+        
         setUpButtons()
         
         // Character text
@@ -109,7 +111,7 @@ class CalendarScene: SKScene {
         // Setting days
         for i in 0..<daysOfMonthsNodes.count {
             
-            daysOfMonthsNodes[i]?.text = getDayNumber(date, i-4)
+            daysOfMonthsNodes[i]?.text = getDayNumber(date, i-(weekDay-1))
             
         }
         
@@ -142,11 +144,16 @@ class CalendarScene: SKScene {
         let weekDay = Calendar.current.component(.weekday, from: date)
         
         for i in 0..<daysOfMonthsNodes.count {
-            if i == 0 || i == 6 {
-                daysOfMonthsNodes[i]?.fontColor = .gray
+            if (daysOfMonthsNodes[i]?.text)! == getDayNumber(date, 0) {
+                daysOfMonthsNodes[i]?.fontColor = .red
             } else {
-                daysOfMonthsNodes[i]?.fontColor = .black
+                if i == 0 || i == 6 {
+                    daysOfMonthsNodes[i]?.fontColor = .gray
+                } else {
+                    daysOfMonthsNodes[i]?.fontColor = .black
+                }
             }
+            
         }
         
         circle.position.x = (daysOfMonthsNodes[dayOfWeek-1]?.position.x)!
@@ -190,12 +197,25 @@ class CalendarScene: SKScene {
                     // Set the scale mode to scale to fit the window
                     scene.scaleMode = .aspectFill
                     
+                    scene.userData = NSMutableDictionary()
+                    scene.userData?.setObject(App.calendar, forKey: "previousScene" as NSCopying)
+                    
                     // Present the scene
                     tableView.removeFromSuperview()
                     self.view?.presentScene(scene)
                 }
             case "startButton":
-                print("startButton")
+                if let scene = StartMenuScene(fileNamed: "StartMenuScene") {
+                    // Set the scale mode to scale to fit the window
+                    scene.scaleMode = .aspectFill
+                    
+                    scene.userData = NSMutableDictionary()
+                    scene.userData?.setObject(App.calendar, forKey: "previousScene" as NSCopying)
+                    
+                    // Present the scene
+                    tableView.removeFromSuperview()
+                    self.view?.presentScene(scene)
+                }
             default:
                 return
             }

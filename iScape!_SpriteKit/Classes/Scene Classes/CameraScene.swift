@@ -44,6 +44,8 @@ class CameraScene: SKScene {
     
     override func didMove(to view: SKView) {
         
+        passedInCameraApp = true
+        
         setUpButtons()
         
         // Character text
@@ -83,12 +85,25 @@ class CameraScene: SKScene {
                     // Set the scale mode to scale to fit the window
                     scene.scaleMode = .aspectFill
                     
+                    scene.userData = NSMutableDictionary()
+                    scene.userData?.setObject(App.camera, forKey: "previousScene" as NSCopying)
+                    
                     // Present the scene
                     pickerView.removeFromSuperview()
                     self.view?.presentScene(scene)
                 }
             case "startButton":
-                print("startButton")
+                if let scene = StartMenuScene(fileNamed: "StartMenuScene") {
+                    // Set the scale mode to scale to fit the window
+                    scene.scaleMode = .aspectFill
+                    
+                    scene.userData = NSMutableDictionary()
+                    scene.userData?.setObject(App.camera, forKey: "previousScene" as NSCopying)
+                    
+                    // Present the scene
+                    pickerView.removeFromSuperview()
+                    self.view?.presentScene(scene)
+                }
             case "cameraButton":
                 numberOfPictures += 1
                 
