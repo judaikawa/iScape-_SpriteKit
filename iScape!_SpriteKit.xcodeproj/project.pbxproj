@@ -44,6 +44,8 @@
 		F75ED2242129F9D90051E5B0 /* EndGameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = F75ED2232129F9D90051E5B0 /* EndGameScene.sks */; };
 		F75ED226212A0C880051E5B0 /* MyParticle.sks in Resources */ = {isa = PBXBuildFile; fileRef = F75ED225212A0C880051E5B0 /* MyParticle.sks */; };
 		F75ED228212A11730051E5B0 /* EndGameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = F75ED227212A11730051E5B0 /* EndGameScene.swift */; };
+		F7EDB154212A4BAE00BC78DF /* NotesDetailScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = F7EDB153212A4BAE00BC78DF /* NotesDetailScene.sks */; };
+		F7EDB156212A4BC500BC78DF /* NotesDetailScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7EDB155212A4BC500BC78DF /* NotesDetailScene.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -86,6 +88,8 @@
 		F75ED2232129F9D90051E5B0 /* EndGameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = EndGameScene.sks; sourceTree = "<group>"; };
 		F75ED225212A0C880051E5B0 /* MyParticle.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = MyParticle.sks; sourceTree = "<group>"; };
 		F75ED227212A11730051E5B0 /* EndGameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndGameScene.swift; sourceTree = "<group>"; };
+		F7EDB153212A4BAE00BC78DF /* NotesDetailScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = NotesDetailScene.sks; sourceTree = "<group>"; };
+		F7EDB155212A4BC500BC78DF /* NotesDetailScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesDetailScene.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -141,6 +145,7 @@
 				A33EE6B521233E9500420ED0 /* MessagesScene.sks */,
 				A33EE6B921234FE600420ED0 /* CalculatorScene.sks */,
 				A3BBEDB22124CEED009865BB /* NotesScene.sks */,
+				F7EDB153212A4BAE00BC78DF /* NotesDetailScene.sks */,
 				A3BBEDB62124D316009865BB /* ClockScene.sks */,
 				F75ED221212907290051E5B0 /* ClockListScene.sks */,
 				A37D523D2125901A00F86810 /* CameraScene.sks */,
@@ -172,6 +177,7 @@
 				A33EE6B72123413400420ED0 /* MessagesScene.swift */,
 				A33EE6BB2123506700420ED0 /* CalculatorScene.swift */,
 				A3BBEDB42124CF79009865BB /* NotesScene.swift */,
+				F7EDB155212A4BC500BC78DF /* NotesDetailScene.swift */,
 				A3BBEDB82124D31E009865BB /* ClockScene.swift */,
 				F75ED21F212900780051E5B0 /* ClockListScene.swift */,
 				A37D523F212590A400F86810 /* CameraScene.swift */,
@@ -259,6 +265,7 @@
 				A33EE6B621233E9500420ED0 /* MessagesScene.sks in Resources */,
 				A3BBEDB72124D316009865BB /* ClockScene.sks in Resources */,
 				A3BBEDB32124CEED009865BB /* NotesScene.sks in Resources */,
+				F7EDB154212A4BAE00BC78DF /* NotesDetailScene.sks in Resources */,
 				F75ED222212907290051E5B0 /* ClockListScene.sks in Resources */,
 				E9E74B4F211A3F91000560EA /* Actions.sks in Resources */,
 			);
@@ -281,6 +288,7 @@
 				A3BBEDB92124D31E009865BB /* ClockScene.swift in Sources */,
 				F75ED220212900780051E5B0 /* ClockListScene.swift in Sources */,
 				A37D524421259D8900F86810 /* PhotosScene.swift in Sources */,
+				F7EDB156212A4BC500BC78DF /* NotesDetailScene.swift in Sources */,
 				A33EE6BC2123506700420ED0 /* CalculatorScene.swift in Sources */,
 				A321F6342126F731007AA154 /* Variables.swift in Sources */,
 				E9E74B53211A3F91000560EA /* GameViewController.swift in Sources */,

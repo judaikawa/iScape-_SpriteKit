@@ -47,9 +47,15 @@ class NotesScene: SKScene {
         
         // Character text
         characterTextLabelNode = self.childNode(withName: "grayViewNode")?.childNode(withName: "baloonNode")?.childNode(withName: "characterTextLabelNode") as? SKLabelNode
-        characterTextLabelNode?.text = ""
         characterTextLabelNode?.preferredMaxLayoutWidth = 230
-        SKLabelNode.animateText(label: characterTextLabelNode!, newText: "We can get to know who this phone belongs to!", characterDelay: characterTextDelay)
+        
+        if self.userData?.value(forKey: "previousScene") != nil {
+            characterTextLabelNode?.text = "We can get to know who this phone belongs to!"
+        } else {
+            characterTextLabelNode?.text = ""
+            SKLabelNode.animateText(label: characterTextLabelNode!, newText: "We can get to know who this phone belongs to!", characterDelay: characterTextDelay)
+        }
+        
         
         // TableView
         tableViewNode = self.childNode(withName: "tableViewNode") as? SKSpriteNode
@@ -125,6 +131,20 @@ extension NotesScene: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableViewAutomaticDimension
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if let scene = NotesDetailScene(fileNamed: "NotesDetailScene") {
+            // Set the scale mode to scale to fit the window
+            scene.scaleMode = .aspectFill
+            
+            scene.userData = NSMutableDictionary()
+            scene.userData?.setObject(notesText[indexPath.row], forKey: "previousScene" as NSCopying)
+            
+            // Present the scene
+            tableView.removeFromSuperview()
+            self.view?.presentScene(scene)
+        }
     }
     
 }
