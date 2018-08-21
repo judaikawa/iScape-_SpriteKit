@@ -7,6 +7,7 @@
 //
 
 import SpriteKit
+import AVFoundation
 
 enum Direction {
     case up
@@ -25,12 +26,6 @@ enum App {
     case calculator
     case messages
     case end
-}
-
-struct PhysicsCategory {
-    static let none: UInt32      = 0     // 0
-    static let player: UInt32 = 0b1   // 1
-    static let app: UInt32    = 0b100 // 4
 }
 
 class MainScene: SKScene, SKPhysicsContactDelegate {
@@ -84,6 +79,8 @@ class MainScene: SKScene, SKPhysicsContactDelegate {
     let triangleSelected = UIImageView()
     
     var sparkleNode: SKSpriteNode?
+    
+    var bgMusicPlayer: AVAudioPlayer!
 
     override func didMove(to view: SKView) {
         
@@ -108,8 +105,13 @@ class MainScene: SKScene, SKPhysicsContactDelegate {
             blackViewNode?.run(colorize, completion: {
                 self.blackViewNode?.run(fadeOut)
                 SKLabelNode.animateText(label: self.characterTextLabelNode!, newText: "Wh-What is happening? A-Am I in a phone?!?", characterDelay: characterTextDelay)
+                // Background music
+                self.playBackgroundMusic()
             })
         } else {
+            
+            // Background music
+            self.playBackgroundMusic()
             
             var text = ""
             if passedInAllApps {
@@ -398,6 +400,27 @@ class MainScene: SKScene, SKPhysicsContactDelegate {
     }
     
     
+}
+
+// Background music
+extension MainScene {
+    func playBackgroundMusic() {
+        if self.bgMusicPlayer == nil {
+            
+            let musicPath = Bundle.main.path(forResource: "background-music", ofType: "mp3")
+            let musicUrl = URL(fileURLWithPath: musicPath!)
+            
+            self.bgMusicPlayer = try! AVAudioPlayer(contentsOf: musicUrl)
+            
+            self.bgMusicPlayer.numberOfLoops = -1 // tocar para sempre
+            
+            self.bgMusicPlayer.prepareToPlay()
+        }
+        
+        self.bgMusicPlayer.pause()
+        self.bgMusicPlayer.currentTime = 0
+        self.bgMusicPlayer.play()
+    }
 }
 
 // Console View

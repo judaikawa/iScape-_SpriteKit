@@ -7,6 +7,7 @@
 //
 
 import SpriteKit
+import AVFoundation
 
 enum ButtonType {
     case number
@@ -43,6 +44,8 @@ class CalculatorScene: SKScene {
     
     var characterTextLabelNode: SKLabelNode?
     
+    var bgMusicPlayer: AVAudioPlayer!
+    
     override func didMove(to view: SKView) {
         
         passedInCalculatorApp = true
@@ -57,6 +60,9 @@ class CalculatorScene: SKScene {
         characterTextLabelNode?.text = ""
         characterTextLabelNode?.preferredMaxLayoutWidth = 230
         SKLabelNode.animateText(label: characterTextLabelNode!, newText: "Ugh, I hate math... But go ahead if you want to", characterDelay: characterTextDelay)
+        
+        // Background music
+        self.playBackgroundMusic()
         
     }
     
@@ -243,6 +249,26 @@ extension CalculatorScene {
     
 }
 
+// Background music
+extension CalculatorScene {
+    func playBackgroundMusic() {
+        if self.bgMusicPlayer == nil {
+            
+            let musicPath = Bundle.main.path(forResource: "background-apps", ofType: "mp3")
+            let musicUrl = URL(fileURLWithPath: musicPath!)
+            
+            self.bgMusicPlayer = try! AVAudioPlayer(contentsOf: musicUrl)
+            
+            self.bgMusicPlayer.numberOfLoops = -1 // tocar para sempre
+            
+            self.bgMusicPlayer.prepareToPlay()
+        }
+        
+        self.bgMusicPlayer.pause()
+        self.bgMusicPlayer.currentTime = 0
+        self.bgMusicPlayer.play()
+    }
+}
 
 // Console View
 extension CalculatorScene {

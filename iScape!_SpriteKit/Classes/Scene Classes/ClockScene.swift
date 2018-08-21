@@ -7,6 +7,7 @@
 //
 
 import SpriteKit
+import AVFoundation
 
 class ClockScene: SKScene, StateChosenDelegate {
     
@@ -50,6 +51,8 @@ class ClockScene: SKScene, StateChosenDelegate {
         tableView.reloadData()
     }
     
+    var bgMusicPlayer: AVAudioPlayer!
+    
     override func didMove(to view: SKView) {
         
         passedInClockApp = true
@@ -68,6 +71,8 @@ class ClockScene: SKScene, StateChosenDelegate {
         } else {
             characterTextLabelNode?.text = ""
             SKLabelNode.animateText(label: characterTextLabelNode!, newText: "Woah it's getting late! I need to go home...", characterDelay: characterTextDelay)
+            // Background music
+            self.playBackgroundMusic()
         }
         
         // Date
@@ -230,6 +235,27 @@ class ClockCell: UITableViewCell {
 
 protocol StateChosenDelegate: class {
     func stateChosenInList(stateIdentifier: String?, city: String?)
+}
+
+// Background music
+extension ClockScene {
+    func playBackgroundMusic() {
+        if self.bgMusicPlayer == nil {
+            
+            let musicPath = Bundle.main.path(forResource: "background-apps", ofType: "mp3")
+            let musicUrl = URL(fileURLWithPath: musicPath!)
+            
+            self.bgMusicPlayer = try! AVAudioPlayer(contentsOf: musicUrl)
+            
+            self.bgMusicPlayer.numberOfLoops = -1 // tocar para sempre
+            
+            self.bgMusicPlayer.prepareToPlay()
+        }
+        
+        self.bgMusicPlayer.pause()
+        self.bgMusicPlayer.currentTime = 0
+        self.bgMusicPlayer.play()
+    }
 }
 
 

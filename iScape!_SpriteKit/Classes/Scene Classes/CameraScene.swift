@@ -7,6 +7,7 @@
 //
 
 import SpriteKit
+import AVFoundation
 
 class CameraScene: SKScene {
     
@@ -42,6 +43,8 @@ class CameraScene: SKScene {
     
     var characterTextLabelNode: SKLabelNode?
     
+    var bgMusicPlayer: AVAudioPlayer!
+    
     override func didMove(to view: SKView) {
         
         passedInCameraApp = true
@@ -70,6 +73,9 @@ class CameraScene: SKScene {
         pickerView.dataSource = self
         pickerView.selectRow(3, inComponent: 0, animated: false)
         self.scene?.view?.addSubview(pickerView)
+        
+        // Background music
+        self.playBackgroundMusic()
         
     }
     
@@ -173,6 +179,27 @@ extension CameraScene: UIPickerViewDelegate, UIPickerViewDataSource {
         pickerView.reloadAllComponents()
     }
     
+}
+
+// Background music
+extension CameraScene {
+    func playBackgroundMusic() {
+        if self.bgMusicPlayer == nil {
+            
+            let musicPath = Bundle.main.path(forResource: "background-apps", ofType: "mp3")
+            let musicUrl = URL(fileURLWithPath: musicPath!)
+            
+            self.bgMusicPlayer = try! AVAudioPlayer(contentsOf: musicUrl)
+            
+            self.bgMusicPlayer.numberOfLoops = -1 // tocar para sempre
+            
+            self.bgMusicPlayer.prepareToPlay()
+        }
+        
+        self.bgMusicPlayer.pause()
+        self.bgMusicPlayer.currentTime = 0
+        self.bgMusicPlayer.play()
+    }
 }
 
 // Console View

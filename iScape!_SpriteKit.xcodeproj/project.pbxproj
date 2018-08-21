@@ -28,6 +28,13 @@
 		A3BBEDB92124D31E009865BB /* ClockScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3BBEDB82124D31E009865BB /* ClockScene.swift */; };
 		A3CC292021270FE9007918C6 /* StartMenuScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = A3CC291F21270FE9007918C6 /* StartMenuScene.sks */; };
 		A3CC29222127118B007918C6 /* StartMenuScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3CC29212127118B007918C6 /* StartMenuScene.swift */; };
+		A3CC2924212B346F007918C6 /* background-music.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A3CC2923212B346E007918C6 /* background-music.mp3 */; };
+		A3CC2926212B36EA007918C6 /* beggining.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A3CC2925212B36EA007918C6 /* beggining.mp3 */; };
+		A3CC2928212B37DE007918C6 /* background-apps.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A3CC2927212B37DE007918C6 /* background-apps.mp3 */; };
+		A3CC292A212B3901007918C6 /* end-music.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A3CC2929212B3901007918C6 /* end-music.mp3 */; };
+		A3CC292C212B5763007918C6 /* player.sks in Resources */ = {isa = PBXBuildFile; fileRef = A3CC292B212B5763007918C6 /* player.sks */; };
+		A3CC292E212B57F0007918C6 /* player.sks in Resources */ = {isa = PBXBuildFile; fileRef = A3CC292D212B57F0007918C6 /* player.sks */; };
+		A3CC2930212B589C007918C6 /* player.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3CC292F212B589C007918C6 /* player.swift */; };
 		A3FBB0312124BF4C008F1E9A /* SKButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3FBB0302124BF4C008F1E9A /* SKButton.swift */; };
 		E9E74B4B211A3F91000560EA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E74B4A211A3F91000560EA /* AppDelegate.swift */; };
 		E9E74B4F211A3F91000560EA /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = E9E74B4E211A3F91000560EA /* Actions.sks */; };
@@ -69,6 +76,13 @@
 		A3BBEDB82124D31E009865BB /* ClockScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClockScene.swift; sourceTree = "<group>"; };
 		A3CC291F21270FE9007918C6 /* StartMenuScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = StartMenuScene.sks; sourceTree = "<group>"; };
 		A3CC29212127118B007918C6 /* StartMenuScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartMenuScene.swift; sourceTree = "<group>"; };
+		A3CC2923212B346E007918C6 /* background-music.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "background-music.mp3"; path = "../../WWDC18-playground/Resources/background-music.mp3"; sourceTree = "<group>"; };
+		A3CC2925212B36EA007918C6 /* beggining.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = beggining.mp3; path = "../../WWDC18-playground/Resources/beggining.mp3"; sourceTree = "<group>"; };
+		A3CC2927212B37DE007918C6 /* background-apps.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "background-apps.mp3"; path = "../../WWDC18-playground/Resources/background-apps.mp3"; sourceTree = "<group>"; };
+		A3CC2929212B3901007918C6 /* end-music.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "end-music.mp3"; path = "../../WWDC18-playground/Resources/end-music.mp3"; sourceTree = "<group>"; };
+		A3CC292B212B5763007918C6 /* player.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = player.sks; sourceTree = "<group>"; };
+		A3CC292D212B57F0007918C6 /* player.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = player.sks; sourceTree = "<group>"; };
+		A3CC292F212B589C007918C6 /* player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = player.swift; sourceTree = "<group>"; };
 		A3FBB0302124BF4C008F1E9A /* SKButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKButton.swift; sourceTree = "<group>"; };
 		E9E74B47211A3F91000560EA /* iScape!_SpriteKit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "iScape!_SpriteKit.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E9E74B4A211A3F91000560EA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -128,7 +142,12 @@
 				E9E74B4A211A3F91000560EA /* AppDelegate.swift */,
 				F75ED225212A0C880051E5B0 /* MyParticle.sks */,
 				E9E74B4E211A3F91000560EA /* Actions.sks */,
+				A3CC292B212B5763007918C6 /* player.sks */,
 				E9E74B52211A3F91000560EA /* GameViewController.swift */,
+				A3CC2925212B36EA007918C6 /* beggining.mp3 */,
+				A3CC2923212B346E007918C6 /* background-music.mp3 */,
+				A3CC2927212B37DE007918C6 /* background-apps.mp3 */,
+				A3CC2929212B3901007918C6 /* end-music.mp3 */,
 				E9E74B54211A3F91000560EA /* Main.storyboard */,
 				E9E74B57211A3F92000560EA /* Assets.xcassets */,
 				E9E74B59211A3F92000560EA /* LaunchScreen.storyboard */,
@@ -154,6 +173,7 @@
 				A321F62F2126DF6C007AA154 /* MailScene.sks */,
 				A3CC291F21270FE9007918C6 /* StartMenuScene.sks */,
 				F75ED2232129F9D90051E5B0 /* EndGameScene.sks */,
+				A3CC292D212B57F0007918C6 /* player.sks */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -186,6 +206,7 @@
 				A321F6312126DF78007AA154 /* MailScene.swift */,
 				A3CC29212127118B007918C6 /* StartMenuScene.swift */,
 				F75ED227212A11730051E5B0 /* EndGameScene.swift */,
+				A3CC292F212B589C007918C6 /* player.swift */,
 			);
 			path = "Scene Classes";
 			sourceTree = "<group>";
@@ -255,10 +276,13 @@
 				F75ED2242129F9D90051E5B0 /* EndGameScene.sks in Resources */,
 				E9E74B56211A3F91000560EA /* Main.storyboard in Resources */,
 				E9E74B58211A3F92000560EA /* Assets.xcassets in Resources */,
+				A3CC2926212B36EA007918C6 /* beggining.mp3 in Resources */,
+				A3CC292A212B3901007918C6 /* end-music.mp3 in Resources */,
 				E9E74B64211A4292000560EA /* MainScene.sks in Resources */,
 				A33EE6B22122FD3600420ED0 /* 8-bit pusab.ttf in Resources */,
 				A321F6302126DF6C007AA154 /* MailScene.sks in Resources */,
 				F75ED226212A0C880051E5B0 /* MyParticle.sks in Resources */,
+				A3CC2928212B37DE007918C6 /* background-apps.mp3 in Resources */,
 				E9E74B6C211C9B0E000560EA /* InitialScene.sks in Resources */,
 				E9E74B5B211A3F92000560EA /* LaunchScreen.storyboard in Resources */,
 				A37D524221259D7A00F86810 /* PhotosScene.sks in Resources */,
@@ -266,7 +290,10 @@
 				A3BBEDB72124D316009865BB /* ClockScene.sks in Resources */,
 				A3BBEDB32124CEED009865BB /* NotesScene.sks in Resources */,
 				F7EDB154212A4BAE00BC78DF /* NotesDetailScene.sks in Resources */,
+				A3CC292C212B5763007918C6 /* player.sks in Resources */,
+				A3CC292E212B57F0007918C6 /* player.sks in Resources */,
 				F75ED222212907290051E5B0 /* ClockListScene.sks in Resources */,
+				A3CC2924212B346F007918C6 /* background-music.mp3 in Resources */,
 				E9E74B4F211A3F91000560EA /* Actions.sks in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -286,6 +313,7 @@
 				A3FBB0312124BF4C008F1E9A /* SKButton.swift in Sources */,
 				E9E74B6E211C9B47000560EA /* InitialScene.swift in Sources */,
 				A3BBEDB92124D31E009865BB /* ClockScene.swift in Sources */,
+				A3CC2930212B589C007918C6 /* player.swift in Sources */,
 				F75ED220212900780051E5B0 /* ClockListScene.swift in Sources */,
 				A37D524421259D8900F86810 /* PhotosScene.swift in Sources */,
 				F7EDB156212A4BC500BC78DF /* NotesDetailScene.swift in Sources */,

@@ -16,8 +16,8 @@ public let characterStep: CGFloat = 10
 
 public var stateArray = ["Sao Paulo", "San Jose"]
 public var dateArray = ["", ""]
-public var identifierArray = ["", ""]
-public var currentStateDateString = ["America/Sao_Paulo","America/Los_Angeles"]
+public var identifierArray = ["America/Sao_Paulo","America/Los_Angeles"]
+public var currentStateDateString = ["", ""]
 
 public var passedInMailApp = false
 public var passedInCalendarApp = false

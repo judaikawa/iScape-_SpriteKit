@@ -7,6 +7,7 @@
 //
 
 import SpriteKit
+import AVFoundation
 
 class NotesDetailScene: SKScene {
     
@@ -31,6 +32,8 @@ class NotesDetailScene: SKScene {
     var notesLabel: SKLabelNode?
     var backNode: SKLabelNode?
     var characterTextLabelNode: SKLabelNode?
+    
+    var bgMusicPlayer: AVAudioPlayer!
     
     override func didMove(to view: SKView) {
         
@@ -92,6 +95,27 @@ class NotesDetailScene: SKScene {
         
     }
 
+}
+
+// Background music
+extension NotesDetailScene {
+    func playBackgroundMusic() {
+        if self.bgMusicPlayer == nil {
+            
+            let musicPath = Bundle.main.path(forResource: "background-apps", ofType: "mp3")
+            let musicUrl = URL(fileURLWithPath: musicPath!)
+            
+            self.bgMusicPlayer = try! AVAudioPlayer(contentsOf: musicUrl)
+            
+            self.bgMusicPlayer.numberOfLoops = -1 // tocar para sempre
+            
+            self.bgMusicPlayer.prepareToPlay()
+        }
+        
+        self.bgMusicPlayer.pause()
+        self.bgMusicPlayer.currentTime = 0
+        self.bgMusicPlayer.play()
+    }
 }
 
 // Console View

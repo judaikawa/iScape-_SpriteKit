@@ -7,6 +7,7 @@
 //
 
 import SpriteKit
+import AVFoundation
 
 class NotesScene: SKScene {
 
@@ -39,6 +40,8 @@ class NotesScene: SKScene {
     
     var characterTextLabelNode: SKLabelNode?
     
+    var bgMusicPlayer: AVAudioPlayer!
+    
     override func didMove(to view: SKView) {
         
         passedInNotesApp = true
@@ -65,6 +68,9 @@ class NotesScene: SKScene {
         tableView.dataSource = self
         tableView.backgroundColor = .clear
         self.scene?.view?.addSubview(tableView)
+        
+        // Background music
+        self.playBackgroundMusic()
         
     }
     
@@ -147,6 +153,27 @@ extension NotesScene: UITableViewDelegate, UITableViewDataSource {
         }
     }
     
+}
+
+// Background music
+extension NotesScene {
+    func playBackgroundMusic() {
+        if self.bgMusicPlayer == nil {
+            
+            let musicPath = Bundle.main.path(forResource: "background-apps", ofType: "mp3")
+            let musicUrl = URL(fileURLWithPath: musicPath!)
+            
+            self.bgMusicPlayer = try! AVAudioPlayer(contentsOf: musicUrl)
+            
+            self.bgMusicPlayer.numberOfLoops = -1 // tocar para sempre
+            
+            self.bgMusicPlayer.prepareToPlay()
+        }
+        
+        self.bgMusicPlayer.pause()
+        self.bgMusicPlayer.currentTime = 0
+        self.bgMusicPlayer.play()
+    }
 }
 
 // Console View

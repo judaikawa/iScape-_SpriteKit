@@ -7,6 +7,7 @@
 //
 
 import SpriteKit
+import AVFoundation
 
 class CalendarScene: SKScene {
 
@@ -61,6 +62,8 @@ class CalendarScene: SKScene {
     let daysOfMonths = ["sundayDay", "mondayDay", "tuesdayDay", "wednesdayDay", "thursdayDay", "fridayDay", "saturdayDay"]
     
     var characterTextLabelNode: SKLabelNode?
+    
+    var bgMusicPlayer: AVAudioPlayer!
     
     override func didMove(to view: SKView) {
         
@@ -123,6 +126,9 @@ class CalendarScene: SKScene {
         formatter.dateFormat = "EEEE, dd MMMM yyyy"
         dayLongNode?.text = formatter.string(from: date)
         dayLongNode?.horizontalAlignmentMode = .center
+        
+        // Background music
+        self.playBackgroundMusic()
         
     }
     
@@ -246,6 +252,27 @@ extension CalendarScene: UITableViewDelegate, UITableViewDataSource {
         return cell!
     }
     
+}
+
+// Background music
+extension CalendarScene {
+    func playBackgroundMusic() {
+        if self.bgMusicPlayer == nil {
+            
+            let musicPath = Bundle.main.path(forResource: "background-apps", ofType: "mp3")
+            let musicUrl = URL(fileURLWithPath: musicPath!)
+            
+            self.bgMusicPlayer = try! AVAudioPlayer(contentsOf: musicUrl)
+            
+            self.bgMusicPlayer.numberOfLoops = -1 // tocar para sempre
+            
+            self.bgMusicPlayer.prepareToPlay()
+        }
+        
+        self.bgMusicPlayer.pause()
+        self.bgMusicPlayer.currentTime = 0
+        self.bgMusicPlayer.play()
+    }
 }
 
 // Console View

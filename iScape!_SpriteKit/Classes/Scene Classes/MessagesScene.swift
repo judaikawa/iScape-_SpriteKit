@@ -8,6 +8,7 @@
 
 import SpriteKit
 import UIKit
+import AVFoundation
 
 class MessagesScene: SKScene {
     
@@ -43,6 +44,8 @@ class MessagesScene: SKScene {
 
     var characterTextLabelNode: SKLabelNode?
     
+    var bgMusicPlayer: AVAudioPlayer!
+    
     override func didMove(to view: SKView) {
         
         passedInMessagesApp = true
@@ -62,6 +65,9 @@ class MessagesScene: SKScene {
         tableView.delegate = self
         tableView.dataSource = self
         self.scene?.view?.addSubview(tableView)
+        
+        // Background music
+        self.playBackgroundMusic()
         
     }
     
@@ -174,6 +180,27 @@ class MessagesCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
+}
+
+// Background music
+extension MessagesScene {
+    func playBackgroundMusic() {
+        if self.bgMusicPlayer == nil {
+            
+            let musicPath = Bundle.main.path(forResource: "background-apps", ofType: "mp3")
+            let musicUrl = URL(fileURLWithPath: musicPath!)
+            
+            self.bgMusicPlayer = try! AVAudioPlayer(contentsOf: musicUrl)
+            
+            self.bgMusicPlayer.numberOfLoops = -1 // tocar para sempre
+            
+            self.bgMusicPlayer.prepareToPlay()
+        }
+        
+        self.bgMusicPlayer.pause()
+        self.bgMusicPlayer.currentTime = 0
+        self.bgMusicPlayer.play()
+    }
 }
 
 // Console View

@@ -7,6 +7,7 @@
 //
 
 import SpriteKit
+import AVFoundation
 
 class PhotosScene: SKScene {
     
@@ -37,6 +38,8 @@ class PhotosScene: SKScene {
     var navBarNode: SKSpriteNode?
     
     var characterTextLabelNode: SKLabelNode?
+    
+    var bgMusicPlayer: AVAudioPlayer!
     
     override func didMove(to view: SKView) {
         
@@ -70,6 +73,9 @@ class PhotosScene: SKScene {
         collectionView.dataSource = self
         collectionView.register(PhotosCell.self, forCellWithReuseIdentifier: "photosCell")
         self.scene?.view?.addSubview(collectionView)
+        
+        // Background music
+        self.playBackgroundMusic()
         
     }
     
@@ -157,6 +163,27 @@ class PhotosCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
+}
+
+// Background music
+extension PhotosScene {
+    func playBackgroundMusic() {
+        if self.bgMusicPlayer == nil {
+            
+            let musicPath = Bundle.main.path(forResource: "background-apps", ofType: "mp3")
+            let musicUrl = URL(fileURLWithPath: musicPath!)
+            
+            self.bgMusicPlayer = try! AVAudioPlayer(contentsOf: musicUrl)
+            
+            self.bgMusicPlayer.numberOfLoops = -1 // tocar para sempre
+            
+            self.bgMusicPlayer.prepareToPlay()
+        }
+        
+        self.bgMusicPlayer.pause()
+        self.bgMusicPlayer.currentTime = 0
+        self.bgMusicPlayer.play()
+    }
 }
 
 // Console View

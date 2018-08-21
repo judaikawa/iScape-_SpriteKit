@@ -7,6 +7,7 @@
 //
 
 import SpriteKit
+import AVFoundation
 
 class InitialScene: SKScene {
     
@@ -30,6 +31,8 @@ class InitialScene: SKScene {
     
     var textOnBaloonNode: SKLabelNode?
     var pressToStartNode: SKLabelNode?
+    
+    var bgMusicPlayer: AVAudioPlayer!
 
     override func didMove(to view: SKView) {
         
@@ -52,6 +55,9 @@ class InitialScene: SKScene {
             self.pressToStartNode?.run(fadeIn)
             
         }
+        
+        // Background music
+        self.playBackgroundMusic()
         
     }
     
@@ -84,6 +90,27 @@ class InitialScene: SKScene {
     }
     
     
+}
+
+// Background music
+extension InitialScene {
+    func playBackgroundMusic() {
+        if self.bgMusicPlayer == nil {
+            
+            let musicPath = Bundle.main.path(forResource: "beggining", ofType: "mp3")
+            let musicUrl = URL(fileURLWithPath: musicPath!)
+            
+            self.bgMusicPlayer = try! AVAudioPlayer(contentsOf: musicUrl)
+            
+            self.bgMusicPlayer.numberOfLoops = -1 // tocar para sempre
+            
+            self.bgMusicPlayer.prepareToPlay()
+        }
+        
+        self.bgMusicPlayer.pause()
+        self.bgMusicPlayer.currentTime = 0
+        self.bgMusicPlayer.play()
+    }
 }
 
 // Console View
